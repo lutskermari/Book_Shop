@@ -5,6 +5,9 @@ class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name="Category Name")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="Slug")
 
+    def __str__(self):
+        return self.name
+
 class Book(models.Model):
     category = models.ManyToManyField(Category, verbose_name="Category")
     title = models.CharField(max_length=100, verbose_name="Book Title")

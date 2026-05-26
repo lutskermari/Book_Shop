@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Магазин книг{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Книжковий магазин</h1>
+        <nav>
+            <form method="get" action="{% url 'book_list' %}">
+                <input type="text" name="search" placeholder="Пошук книги" value="{{ request.GET.search }}">
+                <button type="submit">Пошук</button>
+            </form>
+
+            <a href="{% url 'index' %}">Головна</a> |
+            <a href="{% url 'book_list' %}">Всі книги</a> |
+            <a href="{% url 'category' %}">Категорії</a> |
+            <a href="{% url 'book_create' %}">Додати книгу</a>
+        </nav>
+        <hr>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

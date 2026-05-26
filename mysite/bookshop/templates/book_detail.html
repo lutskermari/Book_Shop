@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ book.title }} {% endblock %}
+
+{% block content %}
+    <h2>{{ book.title }}</h2>
+
+    <p><strong>Автор:</strong> {{ book.author }}</p>
+    <p><strong>Ціна:</strong> {{ book.price }} грн.</p>
+    <p><strong>Опис:</strong> {{ book.description }}</p>
+
+    <p>
+        <a href="{% url 'book_edit' book.pk %}">Редагувати книгу</a> |
+        <a href="{% url 'book_delete' book.pk %}">Видалити книгу</a>
+    </p>
+
+    <hr>
+    <div>
+        {% if previous_book %}
+            <a href="{% url 'book_detail' previous_book.pk %}">Назад</a>
+        {% endif %}
+        {% if next_book %}
+            {% if previous_book %} | {% endif %}
+            <a href="{% url 'book_detail' next_book.pk %}">Вперед</a>
+        {% endif %}
+    </div>
+{% endblock content%}

@@ -17,9 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from bookshop import views as catalog_views
+from bookshop.views import BookListView, BookDetailView, BookCreateView, BookUpdateView, BookDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('catalog/', catalog_views.index, name = "index"),
-    path('catalog/category/', catalog_views.category_list, name = "category")
+    path('catalog/', catalog_views.index, name="index"),
+    path('catalog/categories/', catalog_views.category_list, name="category"),
+    path('catalog/books/', BookListView.as_view(), name="book_list"),
+    path('catalog/books/<int:pk>/', BookDetailView.as_view(), name="book_detail"),
+    path('catalog/new/', BookCreateView.as_view(), name="book_create"),
+    path('catalog/books/<int:pk>/edit/', BookUpdateView.as_view(), name='book_edit'),
+    path('catalog/books/<int:pk>/delete/', BookDeleteView.as_view(), name='book_delete')
 ]

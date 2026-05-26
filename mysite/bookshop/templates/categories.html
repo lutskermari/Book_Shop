@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Категроія книг{% endblock %}
+
+{% block content %}
+    <h2>Категорії книг</h2>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <strong>{{ category.name }}</strong> — Кількість книг дорожче 300 грн: {{ category.books_count }}
+            </li>
+        {% empty %}
+            <li>Категорій не знайдено.</li>
+        {% endfor %}
+    </ul>
+{% endblock content%}

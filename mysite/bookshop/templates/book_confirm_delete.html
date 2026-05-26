@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Підтвердження видалення{% endblock %}
+
+{% block content %}
+    <h2>Підтвердження видалення</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>Ви впевнені, що хочете назавжди видалити книгу "{{ object.title }}"?</p>
+        <button>Так, видалити</button>
+        <a href="{% url 'index' %}">Ні, скасувати</a>
+    </form>
+{% endblock content%}
