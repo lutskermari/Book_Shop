@@ -10,8 +10,12 @@
     <p><strong>Опис:</strong> {{ book.description }}</p>
 
     <p>
-        <a href="{% url 'book_edit' book.pk %}">Редагувати книгу</a> |
-        <a href="{% url 'book_delete' book.pk %}">Видалити книгу</a>
+        {% if perms.books.change_book %}
+            <a href="{% url 'book_edit' book.pk %}">Редагувати книгу</a> |
+        {% endif %}
+        {% if perms.books.delete_book %}
+            <a href="{% url 'book_delete' book.pk %}">Видалити книгу</a>
+        {% endif %}
     </p>
 
     <hr>

@@ -17,7 +17,17 @@
             <a href="{% url 'index' %}">Головна</a> |
             <a href="{% url 'book_list' %}">Всі книги</a> |
             <a href="{% url 'category' %}">Категорії</a> |
-            <a href="{% url 'book_create' %}">Додати книгу</a>
+
+            {% if perms.books.add_book %}
+                <a href="{% url 'book_create' %}">Додати книгу</a> |
+            {% endif %}
+            
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}">Вийти</a> |
+            {% else %}
+                <a href="{% url 'login' %}">Зайти</a> |
+                <a href="{% url 'register' %}">Реєстрація</a> |
+            {% endif %}
         </nav>
         <hr>
     </header>
