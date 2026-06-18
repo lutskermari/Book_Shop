@@ -47,3 +47,51 @@ POST /accounts/login/ | user: AnonymousUser | ip: 127.0.0.1
 GET /catalog/ | user: google_user | ip: 127.0.0.1
 Головна | user: google_user
 200 /catalog/ | 21.0ms
+GET /catalog/ | user: google_user | ip: 127.0.0.1
+Головна | user: google_user
+200 /catalog/ | 551.7ms
+GET /logout/ | user: google_user | ip: 127.0.0.1
+302 /logout/ | 18.9ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 9.1ms
+GET /login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /login/ | 28.3ms
+GET /accounts/google/login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /accounts/google/login/ | 26.1ms
+GET /accounts/login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /accounts/login/ | 32.7ms
+POST /accounts/login/ | user: AnonymousUser | ip: 127.0.0.1
+302 /accounts/login/ | 949.0ms
+GET /catalog/ | user: google_user | ip: 127.0.0.1
+Головна | user: google_user
+200 /catalog/ | 26.2ms
+GET /catalog/categories/ | user: google_user | ip: 127.0.0.1
+Категорії | user: google_user
+200 /catalog/categories/ | 19.1ms
+GET /catalog/books/ | user: google_user | ip: 127.0.0.1
+200 /catalog/books/ | 30.7ms
+GET /catalog/books/3/ | user: google_user | ip: 127.0.0.1
+Книга: 'Гаррі Поттер і філософський камінь' | user: google_user
+200 /catalog/books/3/ | 21.0ms
+GET /catalog/books/5/ | user: google_user | ip: 127.0.0.1
+Книга: 'wefwf' | user: google_user
+200 /catalog/books/5/ | 20.3ms
+GET /catalog/books/6/ | user: google_user | ip: 127.0.0.1
+Книга: 'wefwf' | user: google_user
+200 /catalog/books/6/ | 15.9ms
+GET /catalog/books/7/ | user: google_user | ip: 127.0.0.1
+Книга: '67' | user: google_user
+200 /catalog/books/7/ | 16.2ms
+GET /catalog/books/8/ | user: google_user | ip: 127.0.0.1
+Книга: 'uit' | user: google_user
+200 /catalog/books/8/ | 14.4ms
+GET /catalog/books/9/ | user: google_user | ip: 127.0.0.1
+Книга: 'ееееее' | user: google_user
+200 /catalog/books/9/ | 17.8ms
+GET /catalog/books/9/ | user: google_user | ip: 127.0.0.1
+Книга: 'ееееее' | user: google_user
+GET /catalog/books/9/ | user: google_user | ip: 127.0.0.1
+200 /catalog/books/9/ | 42.5ms
+Книга: 'ееееее' | user: google_user
+200 /catalog/books/9/ | 28.6ms
