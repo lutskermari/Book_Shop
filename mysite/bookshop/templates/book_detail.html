@@ -10,10 +10,10 @@
     <p><strong>Опис:</strong> {{ book.description }}</p>
 
     <p>
-        {% if perms.books.change_book %}
+        {% if perms.bookshop.change_book %}
             <a href="{% url 'book_edit' book.pk %}">Редагувати книгу</a> |
         {% endif %}
-        {% if perms.books.delete_book %}
+        {% if perms.bookshop.delete_book %}
             <a href="{% url 'book_delete' book.pk %}">Видалити книгу</a>
         {% endif %}
     </p>

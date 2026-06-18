@@ -18,7 +18,7 @@
             <a href="{% url 'book_list' %}">Всі книги</a> |
             <a href="{% url 'category' %}">Категорії</a> |
 
-            {% if perms.books.add_book %}
+            {% if perms.bookshop.add_book %}
                 <a href="{% url 'book_create' %}">Додати книгу</a> |
             {% endif %}
             

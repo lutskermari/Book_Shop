@@ -1,0 +1,30 @@
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+200 /catalog/ | 529.8ms
+GET /favicon.ico | user: AnonymousUser | ip: 127.0.0.1
+404 /favicon.ico | 47.0ms
+GET /login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /login/ | 259.4ms
+POST /login/ | user: AnonymousUser | ip: 127.0.0.1
+302 /login/ | 1205.7ms
+GET /catalog/ | user: manager1 | ip: 127.0.0.1
+200 /catalog/ | 69.0ms
+GET /catalog/categories/ | user: manager1 | ip: 127.0.0.1
+Категорії | user: manager1
+200 /catalog/categories/ | 284.3ms
+GET /catalog/new/ | user: manager1 | ip: 127.0.0.1
+200 /catalog/new/ | 285.2ms
+POST /catalog/new/ | user: manager1 | ip: 127.0.0.1
+Створено книгу: 'ееееее' | user: manager1
+302 /catalog/new/ | 91.5ms
+GET /catalog/ | user: manager1 | ip: 127.0.0.1
+Головна | user: manager1
+200 /catalog/ | 19.3ms
+GET /catalog/books/3/ | user: manager1 | ip: 127.0.0.1
+Книга: 'Гаррі Поттер і філософський камінь' | user: manager1
+200 /catalog/books/3/ | 38.5ms
+GET /catalog/books/5/ | user: manager1 | ip: 127.0.0.1
+РљРЅРёРіР°: 'wefwf' | user: manager1
+200 /catalog/books/5/ | 319.5ms
+GET /catalog/books/3/ | user: manager1 | ip: 127.0.0.1
+РљРЅРёРіР°: 'Р“Р°СЂСЂС– РџРѕС‚С‚РµСЂ С– С„С–Р»РѕСЃРѕС„СЃСЊРєРёР№ РєР°РјС–РЅСЊ' | user: manager1
+200 /catalog/books/3/ | 13.6ms
