@@ -28,3 +28,22 @@ GET /catalog/books/5/ | user: manager1 | ip: 127.0.0.1
 GET /catalog/books/3/ | user: manager1 | ip: 127.0.0.1
 Книга: 'Гаррі Поттер і філософський камінь' | user: manager1
 200 /catalog/books/3/ | 13.6ms
+GET /catalog/books/3/ | user: manager1 | ip: 127.0.0.1
+Книга: 'Гаррі Поттер і філософський камінь' | user: manager1
+200 /catalog/books/3/ | 326.0ms
+GET /logout/ | user: manager1 | ip: 127.0.0.1
+302 /logout/ | 54.8ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 9.8ms
+GET /login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /login/ | 23.9ms
+GET /accounts/google/login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /accounts/google/login/ | 204.4ms
+GET /accounts/login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /accounts/login/ | 217.1ms
+POST /accounts/login/ | user: AnonymousUser | ip: 127.0.0.1
+302 /accounts/login/ | 1229.2ms
+GET /catalog/ | user: google_user | ip: 127.0.0.1
+Головна | user: google_user
+200 /catalog/ | 21.0ms
