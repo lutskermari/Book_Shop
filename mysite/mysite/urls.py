@@ -20,6 +20,7 @@ from bookshop import views as catalog_views
 from bookshop.views import BookListView, BookDetailView, BookCreateView, BookUpdateView, BookDeleteView
 from users import views as users_views
 from django.conf import settings 
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,8 +35,11 @@ urlpatterns = [
     
     path('register/', users_views.register_view, name='register'),
     path('login/', users_views.login_view, name='login'),
-    path('logout/', users_views.logout_view, name='logout')
+    path('logout/', users_views.logout_view, name='logout'),
+
+    path('profile/', users_views.profile_view, name='profile'),
 ]
 
 if settings.DEBUG:
     urlpatterns = [path("__debug__/", include("debug_toolbar.urls"))] + urlpatterns
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -95,3 +95,307 @@ GET /catalog/books/9/ | user: google_user | ip: 127.0.0.1
 200 /catalog/books/9/ | 42.5ms
 Книга: 'ееееее' | user: google_user
 200 /catalog/books/9/ | 28.6ms
+GET /catalog/books/9/ | user: AnonymousUser | ip: 127.0.0.1
+404 /catalog/books/9/ | 745.8ms
+GET /favicon.ico | user: AnonymousUser | ip: 127.0.0.1
+404 /favicon.ico | 7.7ms
+GET /catalog | user: AnonymousUser | ip: 127.0.0.1
+404 /catalog | 10.6ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 204.5ms
+GET /catalog/books/ | user: AnonymousUser | ip: 127.0.0.1
+200 /catalog/books/ | 68.5ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 4.7ms
+GET /register/ | user: AnonymousUser | ip: 127.0.0.1
+200 /register/ | 179.3ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 5.5ms
+GET /login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /login/ | 90.8ms
+GET /accounts/google/login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /accounts/google/login/ | 179.1ms
+GET /accounts/login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /accounts/login/ | 153.6ms
+GET /accounts/signup/ | user: AnonymousUser | ip: 127.0.0.1
+200 /accounts/signup/ | 64.8ms
+POST /accounts/signup/ | user: AnonymousUser | ip: 127.0.0.1
+500 /accounts/signup/ | 6053.2ms
+GET /accounts/signup/ | user: AnonymousUser | ip: 127.0.0.1
+200 /accounts/signup/ | 22.7ms
+POST /accounts/signup/ | user: AnonymousUser | ip: 127.0.0.1
+200 /accounts/signup/ | 23.1ms
+POST /accounts/signup/ | user: AnonymousUser | ip: 127.0.0.1
+302 /accounts/signup/ | 1019.6ms
+GET /catalog/ | user: google_user1 | ip: 127.0.0.1
+Головна | user: google_user1
+200 /catalog/ | 62.4ms
+GET /logout/ | user: google_user1 | ip: 127.0.0.1
+302 /logout/ | 17.6ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 6.6ms
+GET /login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /login/ | 9.3ms
+POST /login/ | user: AnonymousUser | ip: 127.0.0.1
+302 /login/ | 939.6ms
+GET /catalog/ | user: admin | ip: 127.0.0.1
+Головна | user: admin
+200 /catalog/ | 12.0ms
+GET /catalog/new/ | user: admin | ip: 127.0.0.1
+200 /catalog/new/ | 226.8ms
+POST /catalog/new/ | user: admin | ip: 127.0.0.1
+Створено книгу: 'hhhhhh' | user: admin
+302 /catalog/new/ | 102.1ms
+GET /catalog/ | user: admin | ip: 127.0.0.1
+Головна | user: admin
+200 /catalog/ | 13.0ms
+GET /profile | user: admin | ip: 127.0.0.1
+404 /profile | 11.9ms
+GET /profile/ | user: admin | ip: 127.0.0.1
+200 /profile/ | 82.1ms
+GET /catalog/ | user: admin | ip: 127.0.0.1
+Головна | user: admin
+200 /catalog/ | 9.7ms
+GET /catalog/ | user: admin | ip: 127.0.0.1
+Головна | user: admin
+500 /catalog/ | 266.6ms
+GET /catalog/ | user: admin | ip: 127.0.0.1
+Головна | user: admin
+200 /catalog/ | 31.3ms
+GET /logout/ | user: admin | ip: 127.0.0.1
+302 /logout/ | 15.3ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 8.0ms
+GET /login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /login/ | 18.9ms
+POST /login/ | user: AnonymousUser | ip: 127.0.0.1
+302 /login/ | 983.8ms
+GET /catalog/ | user: admin | ip: 127.0.0.1
+Головна | user: admin
+200 /catalog/ | 35.6ms
+GET /profile/ | user: admin | ip: 127.0.0.1
+200 /profile/ | 13.2ms
+POST /profile/ | user: admin | ip: 127.0.0.1
+302 /profile/ | 354.3ms
+GET /profile/ | user: admin | ip: 127.0.0.1
+200 /profile/ | 11.7ms
+GET /media/avatars/1681361525_kartinki-pibig-info-p-kartinki-dlya-intro-arti-instagram-1.jpg | user: admin | ip: 127.0.0.1
+200 /media/avatars/1681361525_kartinki-pibig-info-p-kartinki-dlya-intro-arti-instagram-1.jpg | 25.6ms
+POST /profile/ | user: admin | ip: 127.0.0.1
+302 /profile/ | 16.2ms
+GET /profile/ | user: admin | ip: 127.0.0.1
+200 /profile/ | 15.3ms
+GET /catalog/ | user: admin | ip: 127.0.0.1
+Головна | user: admin
+200 /catalog/ | 8.7ms
+GET /logout/ | user: admin | ip: 127.0.0.1
+302 /logout/ | 17.7ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 10.9ms
+GET /register/ | user: AnonymousUser | ip: 127.0.0.1
+200 /register/ | 8.1ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+500 /register/ | 111.4ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 4.7ms
+GET /register/ | user: AnonymousUser | ip: 127.0.0.1
+200 /register/ | 6.9ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+500 /register/ | 42.5ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+500 /register/ | 1615.5ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+200 /register/ | 42.3ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+200 /register/ | 566.2ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+200 /register/ | 8.9ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+200 /register/ | 10.5ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+500 /register/ | 975.2ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+200 /register/ | 426.4ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+302 /register/ | 967.6ms
+GET /catalog/ | user: user2 | ip: 127.0.0.1
+Головна | user: user2
+200 /catalog/ | 33.4ms
+GET /profile/ | user: user2 | ip: 127.0.0.1
+200 /profile/ | 13.7ms
+GET /фвьшт | user: user2 | ip: 127.0.0.1
+404 /фвьшт | 10.3ms
+GET /admin | user: user2 | ip: 127.0.0.1
+404 /admin | 28.4ms
+GET /admin/ | user: user2 | ip: 127.0.0.1
+302 /admin/ | 19.3ms
+GET /admin/login/ | user: user2 | ip: 127.0.0.1
+200 /admin/login/ | 257.2ms
+POST /admin/login/ | user: user2 | ip: 127.0.0.1
+302 /admin/login/ | 988.3ms
+GET /admin/ | user: admin | ip: 127.0.0.1
+200 /admin/ | 103.3ms
+GET /admin/auth/group/ | user: admin | ip: 127.0.0.1
+200 /admin/auth/group/ | 203.9ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 61.2ms
+GET /admin/ | user: admin | ip: 127.0.0.1
+200 /admin/ | 18.5ms
+GET /admin/ | user: admin | ip: 127.0.0.1
+200 /admin/ | 452.3ms
+GET /admin/users/customuser/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/ | 126.6ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 8.9ms
+GET /admin/users/customuser/4/change/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/4/change/ | 366.6ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 14.9ms
+GET /admin/users/customuser/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/ | 26.8ms
+GET /admin/users/customuser/4/change/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/4/change/ | 63.8ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 8.6ms
+GET /admin/users/customuser/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/ | 31.1ms
+GET /admin/users/customuser/2/change/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/2/change/ | 60.9ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 9.4ms
+POST /admin/users/customuser/2/change/ | user: admin | ip: 127.0.0.1
+302 /admin/users/customuser/2/change/ | 136.2ms
+GET /admin/users/customuser/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/ | 44.1ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 9.3ms
+GET /admin/users/customuser/1/change/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/1/change/ | 58.5ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 7.6ms
+GET /admin/users/customuser/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/ | 27.8ms
+GET /catalog | user: admin | ip: 127.0.0.1
+404 /catalog | 11.4ms
+GET /catalog/ | user: admin | ip: 127.0.0.1
+Головна | user: admin
+200 /catalog/ | 12.9ms
+GET /profile/ | user: admin | ip: 127.0.0.1
+200 /profile/ | 17.3ms
+GET /logout/ | user: admin | ip: 127.0.0.1
+302 /logout/ | 64.2ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 10.2ms
+GET /register/ | user: AnonymousUser | ip: 127.0.0.1
+200 /register/ | 23.1ms
+POST /register/ | user: AnonymousUser | ip: 127.0.0.1
+302 /register/ | 983.4ms
+GET /catalog/ | user: manager | ip: 127.0.0.1
+Головна | user: manager
+200 /catalog/ | 25.0ms
+GET /admin | user: manager | ip: 127.0.0.1
+404 /admin | 19.3ms
+GET /admin/ | user: manager | ip: 127.0.0.1
+302 /admin/ | 6.3ms
+GET /admin/login/ | user: manager | ip: 127.0.0.1
+200 /admin/login/ | 20.4ms
+POST /admin/login/ | user: manager | ip: 127.0.0.1
+302 /admin/login/ | 985.6ms
+GET /admin/ | user: admin | ip: 127.0.0.1
+200 /admin/ | 23.8ms
+GET /admin/account/emailaddress/ | user: admin | ip: 127.0.0.1
+200 /admin/account/emailaddress/ | 29.6ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 8.2ms
+GET /admin/ | user: admin | ip: 127.0.0.1
+200 /admin/ | 15.9ms
+GET /admin/users/customuser/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/ | 29.6ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 7.5ms
+GET /admin/users/customuser/7/change/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/7/change/ | 71.0ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 9.2ms
+POST /admin/users/customuser/7/change/ | user: admin | ip: 127.0.0.1
+302 /admin/users/customuser/7/change/ | 37.8ms
+GET /admin/users/customuser/ | user: admin | ip: 127.0.0.1
+200 /admin/users/customuser/ | 37.0ms
+GET /admin/jsi18n/ | user: admin | ip: 127.0.0.1
+200 /admin/jsi18n/ | 8.1ms
+GET /catalog | user: admin | ip: 127.0.0.1
+404 /catalog | 13.3ms
+GET /catalog/ | user: admin | ip: 127.0.0.1
+Головна | user: admin
+200 /catalog/ | 6.9ms
+GET /logout/ | user: admin | ip: 127.0.0.1
+302 /logout/ | 13.0ms
+GET /catalog/ | user: AnonymousUser | ip: 127.0.0.1
+Головна | user: AnonymousUser
+200 /catalog/ | 6.2ms
+GET /login/ | user: AnonymousUser | ip: 127.0.0.1
+200 /login/ | 11.9ms
+POST /login/ | user: AnonymousUser | ip: 127.0.0.1
+302 /login/ | 973.7ms
+GET /catalog/ | user: manager | ip: 127.0.0.1
+Головна | user: manager
+200 /catalog/ | 15.6ms
+GET /catalog/new/ | user: manager | ip: 127.0.0.1
+200 /catalog/new/ | 20.6ms
+POST /catalog/new/ | user: manager | ip: 127.0.0.1
+Створено книгу: 'ipoiiqqqqqq' | user: manager
+302 /catalog/new/ | 44.2ms
+GET /catalog/ | user: manager | ip: 127.0.0.1
+Головна | user: manager
+200 /catalog/ | 15.3ms
+GET /catalog/books/ | user: manager | ip: 127.0.0.1
+200 /catalog/books/ | 15.1ms
+GET /catalog/books/1/ | user: manager | ip: 127.0.0.1
+Книга: 'hhhhhh' | user: manager
+200 /catalog/books/1/ | 17.8ms
+GET /catalog/books/2/ | user: manager | ip: 127.0.0.1
+Книга: 'ipoiiqqqqqq' | user: manager
+200 /catalog/books/2/ | 12.3ms
+GET /catalog/books/1/ | user: manager | ip: 127.0.0.1
+Книга: 'hhhhhh' | user: manager
+200 /catalog/books/1/ | 13.5ms
+GET /catalog/books/2/ | user: manager | ip: 127.0.0.1
+Книга: 'ipoiiqqqqqq' | user: manager
+200 /catalog/books/2/ | 17.1ms
+GET /catalog/books/1/ | user: manager | ip: 127.0.0.1
+Книга: 'hhhhhh' | user: manager
+200 /catalog/books/1/ | 13.2ms
+GET /profile/ | user: manager | ip: 127.0.0.1
+200 /profile/ | 13.8ms
+POST /profile/ | user: manager | ip: 127.0.0.1
+302 /profile/ | 17.5ms
+GET /profile/ | user: manager | ip: 127.0.0.1
+200 /profile/ | 13.3ms
+POST /profile/ | user: manager | ip: 127.0.0.1
+302 /profile/ | 30.6ms
+GET /profile/ | user: manager | ip: 127.0.0.1
+200 /profile/ | 12.8ms
+GET /catalog/ | user: manager | ip: 127.0.0.1
+Головна | user: manager
+200 /catalog/ | 16.2ms
+GET /profile/ | user: manager | ip: 127.0.0.1
+200 /profile/ | 9.5ms
+POST /profile/ | user: manager | ip: 127.0.0.1
+302 /profile/ | 16.3ms
+GET /profile/ | user: manager | ip: 127.0.0.1
+200 /profile/ | 14.7ms
+GET /catalog/ | user: manager | ip: 127.0.0.1
+Головна | user: manager
+200 /catalog/ | 15.1ms
+GET /profile/ | user: manager | ip: 127.0.0.1
+200 /profile/ | 12.4ms
+GET /profile/ | user: manager | ip: 127.0.0.1
+200 /profile/ | 10.6ms

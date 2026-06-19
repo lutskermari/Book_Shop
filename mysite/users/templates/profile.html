@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мій профіль</title>
+</head>
+<body>
+    <h2>Особисті дані користувача {{ request.user.username }}</h2>
+
+    {% if request.user.avatar %}
+        <div style="margin-bottom: 20px;">
+            <img src="{{ request.user.avatar.url }}" alt="Аватар" style="max-width: 150px; border-radius: 50%;">
+        </div>
+    {% else %}
+        <p>(Аватар ще не завантажено)</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Зберегти зміни</button>
+    </form>
+
+    <hr>
+    <a href="{% url 'index' %}">На головну сторінку</a>
+</body>
+</html>
