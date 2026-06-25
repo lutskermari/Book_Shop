@@ -1,0 +1,914 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-06-19T18:35:46.354Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "google_user",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-06-19T18:37:35.587Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "7",
+        "object_repr": "manager",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 3,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 3,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 3,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 3,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 2,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 2,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 2,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 2,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 4,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 4,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 4,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 4,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 5,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 5,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 5,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 5,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add category",
+        "content_type": 7,
+        "codename": "add_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change category",
+        "content_type": 7,
+        "codename": "change_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete category",
+        "content_type": 7,
+        "codename": "delete_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view category",
+        "content_type": 7,
+        "codename": "view_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add book",
+        "content_type": 6,
+        "codename": "add_book"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change book",
+        "content_type": 6,
+        "codename": "change_book"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete book",
+        "content_type": 6,
+        "codename": "delete_book"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view book",
+        "content_type": 6,
+        "codename": "view_book"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 8,
+        "codename": "add_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 8,
+        "codename": "change_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 8,
+        "codename": "delete_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view user",
+        "content_type": 8,
+        "codename": "view_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can add email address",
+        "content_type": 9,
+        "codename": "add_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can change email address",
+        "content_type": 9,
+        "codename": "change_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can delete email address",
+        "content_type": 9,
+        "codename": "delete_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can view email address",
+        "content_type": 9,
+        "codename": "view_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add email confirmation",
+        "content_type": 10,
+        "codename": "add_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change email confirmation",
+        "content_type": 10,
+        "codename": "change_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete email confirmation",
+        "content_type": 10,
+        "codename": "delete_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view email confirmation",
+        "content_type": 10,
+        "codename": "view_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add social account",
+        "content_type": 11,
+        "codename": "add_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change social account",
+        "content_type": 11,
+        "codename": "change_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete social account",
+        "content_type": 11,
+        "codename": "delete_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view social account",
+        "content_type": 11,
+        "codename": "view_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can add social application",
+        "content_type": 12,
+        "codename": "add_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+        "name": "Can change social application",
+        "content_type": 12,
+        "codename": "change_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+        "name": "Can delete social application",
+        "content_type": 12,
+        "codename": "delete_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+        "name": "Can view social application",
+        "content_type": 12,
+        "codename": "view_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+        "name": "Can add social application token",
+        "content_type": 13,
+        "codename": "add_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+        "name": "Can change social application token",
+        "content_type": 13,
+        "codename": "change_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+        "name": "Can delete social application token",
+        "content_type": 13,
+        "codename": "delete_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+        "name": "Can view social application token",
+        "content_type": 13,
+        "codename": "view_socialtoken"
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+        "name": "Managers",
+        "permissions": [
+            25,
+            26,
+            27
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+        "name": "Regular Users",
+        "permissions": []
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "bookshop",
+        "model": "book"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "bookshop",
+        "model": "category"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "users",
+        "model": "customuser"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "account",
+        "model": "emailaddress"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "account",
+        "model": "emailconfirmation"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "socialaccount",
+        "model": "socialaccount"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "socialaccount",
+        "model": "socialapp"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "socialaccount",
+        "model": "socialtoken"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "c1s7cye3qr8h4l2jn6ialydgedzet1z0",
+    "fields": {
+        "session_data": "e30:1waduN:r_FIKTAUOlOU_jxiBaOm2Omm0MAtteQvdt68lYjJ1iM",
+        "expire_date": "2026-07-03T18:25:39.885Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "j6berjwtge860f9s6hif182tvuyotld0",
+    "fields": {
+        "session_data": "e30:1wadrt:JtC5MhO1pUNJXu2kZkvAxoOffksVzhZICQKHKfX59Cc",
+        "expire_date": "2026-07-03T18:23:05.954Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "stfl98poja2ayf7t7fd8ux65pxrtfc2n",
+    "fields": {
+        "session_data": ".eJxVjM0OgjAQBt9lz6ahLdCWo3efgXzd3QpqIOHnZHx3Q8JBrzOTeVOPfRv6fdWlH4U6CnT5ZRn81OkQ8sB0nw3P07aM2RyJOe1qbrPo63q2f4MB60AdedROEzecHIrGIJWzTrzNsXhUiAne1m0I4DaxZIHNsUVB8ZWy1g19vvTCOLk:1wae6b:yrIBg0zW6X5m6KUbkglq1CXWH0xisOSpmB6CUgfqdYo",
+        "expire_date": "2026-07-03T18:38:17.343Z"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 1,
+    "fields": {
+        "name": "╘хэЄхч│",
+        "slug": "fantasy"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 2,
+    "fields": {
+        "name": "─хЄхъЄштш",
+        "slug": "detective-fiction"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 3,
+    "fields": {
+        "name": "═рєъютр ЇрэЄрёЄшър",
+        "slug": "sci-fi"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 4,
+    "fields": {
+        "name": "╩ырёшър",
+        "slug": "classics"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 5,
+    "fields": {
+        "name": "╞рїш",
+        "slug": "horror"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 6,
+    "fields": {
+        "name": "╨юьрэш",
+        "slug": "romance"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 7,
+    "fields": {
+        "name": "╧Ёшуюфш",
+        "slug": "adventure"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 8,
+    "fields": {
+        "name": "└эЄшєЄюя│ ",
+        "slug": "dystopia"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 9,
+    "fields": {
+        "name": "╩юь│ъёш",
+        "slug": "comics"
+    }
+},
+{
+    "model": "bookshop.category",
+    "pk": 10,
+    "fields": {
+        "name": "╠рэ┤р",
+        "slug": "manga"
+    }
+},
+{
+    "model": "bookshop.book",
+    "pk": 1,
+    "fields": {
+        "title": "hhhhhh",
+        "author": "rrrrrr",
+        "price": "200.00",
+        "description": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+        "published_date": "2026-05-11",
+        "stock": true,
+        "category": [
+            2
+        ]
+    }
+},
+{
+    "model": "bookshop.book",
+    "pk": 2,
+    "fields": {
+        "title": "ipoiiqqqqqq",
+        "author": "22222222",
+        "price": "100.00",
+        "description": "ggggggggggggffffffffffffffffff",
+        "published_date": "2026-05-11",
+        "stock": true,
+        "category": [
+            4
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$KJVLwjnHqtuaTrErm8Yrhv$io6yvCXSJ7qpCSI8t4AkVHmXNK74JDMAUqnIHVp/7cM=",
+        "last_login": "2026-06-19T18:37:12.240Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-19T15:54:32.336Z",
+        "phone": "",
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$VR3Lta341CXyHZLsIOL9W3$KErJ4/0e3RfmRhpmhbd3bpxjm2WKPV6JY3GgAn9bsXc=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "google_user",
+        "first_name": "",
+        "last_name": "",
+        "email": "jhsfghsj@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-19T16:06:36Z",
+        "phone": "",
+        "avatar": "",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$YFSyL3QAhG7Fk639DfN81y$qjZsurk+Gja6ofNBdlr1KbaoKCSDVaSho4ssvql/69Q=",
+        "last_login": "2026-06-19T16:07:18.346Z",
+        "is_superuser": false,
+        "username": "google_user1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-19T16:07:17.375Z",
+        "phone": "",
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$0Pu8fqwOXApcXlexACMagW$aBhAv0EvlFdIOywwfqbbHNu/jyKmSl02O0eAnYw4uEg=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-19T18:23:04.388Z",
+        "phone": "",
+        "avatar": "",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$XQSpdgvhN8cjnJCbFBXOdc$5SVgQRLkeiVkUmdiTfi7Tq73pEX9ubIj0+HbdkHZHZs=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-19T18:25:38.953Z",
+        "phone": "",
+        "avatar": "",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$bvWcr8Yb45ROnBwb1lY54a$HCVORS4/ggvSo+sSEgGP07S/OYwmIs5Ax9MQSkoiW4Y=",
+        "last_login": "2026-06-19T18:29:03.567Z",
+        "is_superuser": false,
+        "username": "user2",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-19T18:29:02.608Z",
+        "phone": "",
+        "avatar": "",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$wZY8hZJibxYG4zBMkBTbt2$PvWvZdeo/rzp6u0k8phIzBqF/I8M0/E0EUqNQZ4Ide4=",
+        "last_login": "2026-06-19T18:38:17.319Z",
+        "is_superuser": false,
+        "username": "manager",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-19T18:36:44Z",
+        "phone": "+38066666666",
+        "avatar": "",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.emailaddress",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "email": "jhsfghsj@gmail.com",
+        "verified": false,
+        "primary": true
+    }
+}
+]
