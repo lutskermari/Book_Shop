@@ -24,6 +24,7 @@
             
             {% if request.user.is_authenticated %}
                 <a href="{% url 'logout' %}">Вийти</a> |
+                <a href="{% url 'cart_detail' %}">Кошик</a> |
             {% else %}
                 <a href="{% url 'login' %}">Зайти</a> |
                 <a href="{% url 'register' %}">Реєстрація</a> |

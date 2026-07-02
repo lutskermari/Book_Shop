@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from bookshop import views as catalog_views
+from bookshop import views
 from bookshop.views import BookListView, BookDetailView, BookCreateView, BookUpdateView, BookDeleteView
 from users import views as users_views
 from django.conf import settings 
@@ -38,6 +39,13 @@ urlpatterns = [
     path('logout/', users_views.logout_view, name='logout'),
 
     path('profile/', users_views.profile_view, name='profile'),
+
+    path("cart/", views.cart_detail, name="cart_detail"),
+    path("cart/add/<int:book_id>/", views.cart_add, name="cart_add"),
+    path("cart/remove/<int:book_id>/", views.cart_remove, name="cart_remove"),
+    path("cart/clear/", views.cart_clear, name="cart_clear"),
+    path("order/create/", views.order_create, name="order_create"),
+    path("order/success/", views.order_success, name="order_success"),
 ]
 
 if settings.DEBUG:

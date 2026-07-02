@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <input name="first_name" placeholder="Ім'я" required>
+    <input name="last_name" placeholder="Прізвище" required>
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="address" placeholder="Адреса" required>
+    <button type="submit">Замовити</button>
+</form>
+
+{% endblock %}

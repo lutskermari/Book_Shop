@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Кошик</h1>
+
+{% for item in cart %}
+    <p>{{ item.book.title }} x{{ item.quantity }} = {{ item.total_price }} грн
+    <a href="{% url 'cart_remove' item.book.id %}">видалити</a></p>
+{% endfor %}
+
+<p>Загалом: {{ cart.get_total_price }} грн</p>
+<a href="{% url 'order_create' %}">Оформити</a>
+
+{% endblock %}

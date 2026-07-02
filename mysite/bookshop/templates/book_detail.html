@@ -9,6 +9,14 @@
     <p><strong>Ціна:</strong> {{ book.price }} грн.</p>
     <p><strong>Опис:</strong> {{ book.description }}</p>
 
+    {% if request.user.is_authenticated %}
+        <form action="{% url 'cart_add' book.id %}" method="post">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="1" min="1" max="{{ book.stock }}">
+            <button type="submit">Додати в кошик</button>
+        </form>
+    {% endif %}
+
     <p>
         {% if perms.bookshop.change_book %}
             <a href="{% url 'book_edit' book.pk %}">Редагувати книгу</a> |

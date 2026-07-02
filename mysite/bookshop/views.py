@@ -1,12 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
-from .models import Book, Category
+from django.urls import reverse_lazy, reverse
+from django.conf import settings
+from .models import Book, Category, Order, OrderItem
 from django.db.models import Q, Count
+from django.db import transaction
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from .cart import Cart
+from django.core.mail import send_mail
 import logging
+import stripe
 
 logger = logging.getLogger("bookshop")
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your views here.
 def index(request):
@@ -85,3 +92,95 @@ class BookDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     def form_valid(self, form):
         logger.warning(f"Видалено книгу: '{self.object.title}' | user: {self.request.user}")
         return super().form_valid(form)
+    
+def cart_add(request, book_id):
+    cart = Cart(request)
+    book = Book.objects.get(id=book_id)
+    quantity = int(request.POST.get("quantity", 1))
+    cart.add(book=book, quantity=quantity)
+    return redirect("cart_detail")
+
+def cart_remove(request, book_id):
+    cart = Cart(request)
+    book = Book.objects.get(id=book_id)
+    cart.remove(book)
+    return redirect("cart_detail")
+
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart_detail")
+
+def cart_detail(request):
+    cart = Cart(request)
+    return render(request, "cart_detail.html", {"cart": cart})
+
+def order_create(request):
+    cart = Cart(request)
+    if not cart:
+        return redirect('cart_detail')
+
+    if request.method == "POST":
+        with transaction.atomic():
+            order = Order.objects.create(
+                first_name=request.POST["first_name"],
+                last_name=request.POST["last_name"],
+                email=request.POST["email"],
+                address=request.POST["address"],
+            )
+            
+            for item in cart:
+                OrderItem.objects.create(
+                    order=order,
+                    book=item["book"],
+                    price=item["price"],
+                    quantity=item["quantity"],
+                )
+
+            payment_url = create_payment_session(request, order)
+
+        cart.clear()
+
+        return redirect(payment_url, code=303)
+
+    return render(request, "order_create.html", {"cart": cart})
+
+def create_payment_session(request, order):
+    success_url = request.build_absolute_uri(reverse('order_success') + f"?order_id={order.id}")
+    cancel_url = request.build_absolute_uri(reverse('cart_detail'))
+
+    session = stripe.checkout.Session.create(
+        payment_method_types=["card"], 
+        line_items=[
+            {
+                "price_data": {
+                    "currency": "uah", 
+                    "product_data": {
+                        "name": f"Оплата замовлення #{order.id}",
+                    },
+                    "unit_amount": int(float(order.get_total_cost()) * 100),
+                },
+                "quantity": 1,
+            }
+        ],
+        mode="payment",
+        success_url=success_url,
+        cancel_url=cancel_url,
+        customer_email=order.email,
+    )
+    return session.url 
+
+def order_success(request):
+    order = Order.objects.get(id=request.GET.get('order_id'))
+    
+    order.paid = True
+    order.save()
+    
+    send_mail(
+        subject=f"Замовлення #{order.id} успішно оплачено!",
+        message=f"Дякуємо за оплату замовлення на суму {order.get_total_cost()} грн.",
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[order.email],
+    )
+    
+    return render(request, "order_success.html", {"order": order})

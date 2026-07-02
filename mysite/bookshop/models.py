@@ -16,3 +16,29 @@ class Book(models.Model):
     description = models.TextField(verbose_name="Description")
     published_date = models.DateField(null=True, blank=True, verbose_name="Published Date")
     stock = models.BooleanField(default=True, verbose_name="Stock Status")
+
+class Order(models.Model):
+    first_name = models.CharField("Ім'я", max_length=100)
+    last_name = models.CharField("Прізвище", max_length=100)
+    email = models.EmailField("Email")
+    address = models.CharField("Адреса", max_length=255)
+    paid = models.BooleanField("Оплачено", default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Замовлення #{self.id}"
+
+    def get_total_cost(self):
+        return sum(item.get_cost() for item in self.items.all())
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items")
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.book.title} x {self.quantity}"
+
+    def get_cost(self):
+        return self.price * self.quantity
