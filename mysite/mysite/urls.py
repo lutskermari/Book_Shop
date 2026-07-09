@@ -17,14 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from bookshop import views as catalog_views
-from bookshop import views
+from bookshop import views, async_views
 from bookshop.views import BookListView, BookDetailView, BookCreateView, BookUpdateView, BookDeleteView
 from users import views as users_views
 from django.conf import settings 
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),]
+
+urlpatterns += i18n_patterns(
     path('accounts/', include('allauth.urls')),
     path('catalog/', catalog_views.index, name="index"),
     path('catalog/categories/', catalog_views.category_list, name="category"),
@@ -46,7 +49,11 @@ urlpatterns = [
     path("cart/clear/", views.cart_clear, name="cart_clear"),
     path("order/create/", views.order_create, name="order_create"),
     path("order/success/", views.order_success, name="order_success"),
-]
+
+    path("api/books/", async_views.async_book_list, name="api_book_list"),
+    path("api/books/<int:pk>/", async_views.async_book_detail, name="api_book_detail"),
+    path("api/stats/", async_views.async_catalog_stats, name="api_catalog_stats"),
+)
 
 if settings.DEBUG:
     urlpatterns = [path("__debug__/", include("debug_toolbar.urls"))] + urlpatterns

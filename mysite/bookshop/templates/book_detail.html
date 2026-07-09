@@ -1,39 +1,45 @@
 {% extends 'base.html' %}
-
-{% block title %} {{ book.title }} {% endblock %}
+{% load i18n %} {% block title %} {{ book.title }} {% endblock %}
 
 {% block content %}
     <h2>{{ book.title }}</h2>
 
-    <p><strong>Автор:</strong> {{ book.author }}</p>
-    <p><strong>Ціна:</strong> {{ book.price }} грн.</p>
-    <p><strong>Опис:</strong> {{ book.description }}</p>
+    <p><strong>{% trans "Автор:" %}</strong> {{ book.author }}</p>
+    
+    <p>
+        <strong>{% trans "Ціна:" %}</strong> 
+        {% blocktrans with price=book.price %}
+            {{ price }} грн.
+        {% endblocktrans %}
+    </p>
+    
+    <p><strong>{% trans "Опис:" %}</strong> {{ book.description }}</p>
 
     {% if request.user.is_authenticated %}
         <form action="{% url 'cart_add' book.id %}" method="post">
             {% csrf_token %}
             <input type="number" name="quantity" value="1" min="1" max="{{ book.stock }}">
-            <button type="submit">Додати в кошик</button>
+            <button type="submit">{% trans "Додати в кошик" %}</button>
         </form>
     {% endif %}
 
     <p>
         {% if perms.bookshop.change_book %}
-            <a href="{% url 'book_edit' book.pk %}">Редагувати книгу</a> |
+            <a href="{% url 'book_edit' book.pk %}">{% trans "Редагувати книгу" %}</a> |
         {% endif %}
         {% if perms.bookshop.delete_book %}
-            <a href="{% url 'book_delete' book.pk %}">Видалити книгу</a>
+            <a href="{% url 'book_delete' book.pk %}">{% trans "Видалити книгу" %}</a>
         {% endif %}
     </p>
 
     <hr>
     <div>
         {% if previous_book %}
-            <a href="{% url 'book_detail' previous_book.pk %}">Назад</a>
+            <a href="{% url 'book_detail' previous_book.pk %}">{% trans "Назад" %}</a>
         {% endif %}
         {% if next_book %}
             {% if previous_book %} | {% endif %}
-            <a href="{% url 'book_detail' next_book.pk %}">Вперед</a>
+            <a href="{% url 'book_detail' next_book.pk %}">{% trans "Вперед" %}</a>
         {% endif %}
     </div>
 {% endblock content%}

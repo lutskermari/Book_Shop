@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block content %}
+{% load i18n %} {% block content %}
 
-<h1>Кошик</h1>
+<h1>{% trans "Кошик" %}</h1>
 
 {% for item in cart %}
-    <p>{{ item.book.title }} x{{ item.quantity }} = {{ item.total_price }} грн
-    <a href="{% url 'cart_remove' item.book.id %}">видалити</a></p>
+    <p>{{ item.book.title }} x{{ item.quantity }} = {% blocktrans with total=item.total_price %}{{ total }} грн{% endblocktrans %}
+    <a href="{% url 'cart_remove' item.book.id %}">{% trans "видалити" %}</a></p>
 {% endfor %}
 
-<p>Загалом: {{ cart.get_total_price }} грн</p>
-<a href="{% url 'order_create' %}">Оформити</a>
+<p>{% trans "Загалом:" %} {% blocktrans with total_cart=cart.get_total_price %}{{ total_cart }} грн{% endblocktrans %}</p>
+<a href="{% url 'order_create' %}">{% trans "Оформити" %}</a>
 
 {% endblock %}

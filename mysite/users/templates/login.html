@@ -1,24 +1,23 @@
 {% load socialaccount %}
-
-<!DOCTYPE html>
+{% load i18n %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вхід</title>
+    <title>{% trans "Вхід" %}</title>
 </head>
 <body>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Зайти</button>
+        <button type="submit">{% trans "Зайти" %}</button>
     </form>
 
     <hr>
     
-    <a href="{% provider_login_url 'google' %}">Увійти через Google</a>
+    <a href="{% provider_login_url 'google' %}">{% trans "Увійти через Google" %}</a>
     <br><br>
     
-    <a href="{% url 'index' %}">Повернутися</a>
+    <a href="{% url 'index' %}">{% trans "Повернутися" %}</a>
 </body>
 </html>

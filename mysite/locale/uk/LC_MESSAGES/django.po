@@ -1,0 +1,428 @@
+# Ukrainian translations for Book Shop
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-08 20:34+0000\n"
+"PO-Revision-Date: 2026-07-08 20:00+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: bookshop/models.py:5
+msgid "Category Name"
+msgstr "Назва категорії"
+
+#: bookshop/models.py:6
+msgid "Slug"
+msgstr "Slug"
+
+#: bookshop/models.py:9 bookshop/models.py:16
+msgid "Category"
+msgstr "Категорія"
+
+#: bookshop/models.py:10
+msgid "Categories"
+msgstr "Категорії"
+
+#: bookshop/models.py:17
+msgid "Book Title"
+msgstr "Назва книги"
+
+#: bookshop/models.py:18
+msgid "Author"
+msgstr "Автор"
+
+#: bookshop/models.py:19 bookshop/models.py:52
+msgid "Price"
+msgstr "Ціна"
+
+#: bookshop/models.py:20
+msgid "Description"
+msgstr "Опис"
+
+#: bookshop/models.py:21
+msgid "Published Date"
+msgstr "Дата публікації"
+
+#: bookshop/models.py:22
+msgid "Stock Status"
+msgstr "Наявність"
+
+#: bookshop/models.py:25 bookshop/models.py:51
+msgid "Book"
+msgstr "Книга"
+
+#: bookshop/models.py:26
+msgid "Books"
+msgstr "Книги"
+
+#: bookshop/models.py:32
+msgid "First Name"
+msgstr "Ім'я"
+
+#: bookshop/models.py:33
+msgid "Last Name"
+msgstr "Прізвище"
+
+#: bookshop/models.py:34 bookshop/templates/order_create.html:8
+msgid "Email"
+msgstr "Email"
+
+#: bookshop/models.py:35
+msgid "Address"
+msgstr "Адреса"
+
+#: bookshop/models.py:36
+msgid "Paid"
+msgstr "Оплачено"
+
+#: bookshop/models.py:37
+msgid "Created At"
+msgstr "Дата створення"
+
+#: bookshop/models.py:40 bookshop/models.py:44 bookshop/models.py:50
+msgid "Order"
+msgstr "Замовлення"
+
+#: bookshop/models.py:41
+msgid "Orders"
+msgstr "Замовлення"
+
+#: bookshop/models.py:53
+msgid "Quantity"
+msgstr "Кількість"
+
+#: bookshop/models.py:56
+msgid "Order Item"
+msgstr "Позиція замовлення"
+
+#: bookshop/models.py:57
+msgid "Order Items"
+msgstr "Позиції замовлення"
+
+#: bookshop/templates/base.html:7
+msgid "Магазин книг"
+msgstr "Магазин книг"
+
+#: bookshop/templates/base.html:11
+msgid "Книжковий магазин"
+msgstr "Книжковий магазин"
+
+#: bookshop/templates/base.html:14
+msgid "Пошук книги"
+msgstr "Пошук книги"
+
+#: bookshop/templates/base.html:15
+msgid "Пошук"
+msgstr "Пошук"
+
+#: bookshop/templates/base.html:18
+msgid "Головна"
+msgstr "Головна"
+
+#: bookshop/templates/base.html:19
+msgid "Всі книги"
+msgstr "Всі книги"
+
+#: bookshop/templates/base.html:20
+msgid "Категорії"
+msgstr "Категорії"
+
+#: bookshop/templates/base.html:23
+msgid "Додати книгу"
+msgstr "Додати книгу"
+
+#: bookshop/templates/base.html:27
+msgid "Вийти"
+msgstr "Вийти"
+
+#: bookshop/templates/base.html:28 bookshop/templates/cart_detail.html:4
+msgid "Кошик"
+msgstr "Кошик"
+
+#: bookshop/templates/base.html:30 users/templates/login.html:13
+msgid "Зайти"
+msgstr "Зайти"
+
+#: bookshop/templates/base.html:31 users/templates/register.html:6
+msgid "Реєстрація"
+msgstr "Реєстрація"
+
+#: bookshop/templates/base.html:35
+msgid "Профіль"
+msgstr "Профіль"
+
+#: bookshop/templates/book_confirm_delete.html:2
+#: bookshop/templates/book_confirm_delete.html:5
+msgid "Підтвердження видалення"
+msgstr "Підтвердження видалення"
+
+#: bookshop/templates/book_confirm_delete.html:10
+#, python-format
+msgid ""
+"\n"
+"                Ви впевнені, що хочете назавжди видалити книгу "
+"\"%(title)s\"?\n"
+"            "
+msgstr ""
+"\n"
+"                Ви впевнені, що хочете назавжди видалити книгу "
+"\"%(title)s\"?\n"
+"            "
+
+#: bookshop/templates/book_confirm_delete.html:15
+msgid "Так, видалити"
+msgstr "Так, видалити"
+
+#: bookshop/templates/book_confirm_delete.html:16
+msgid "Ні, скасувати"
+msgstr "Ні, скасувати"
+
+#: bookshop/templates/book_create.html:2
+msgid "Книга"
+msgstr "Книга"
+
+#: bookshop/templates/book_create.html:7
+#, python-format
+msgid ""
+"\n"
+"                Редагування книги: %(title)s\n"
+"            "
+msgstr ""
+"\n"
+"                Редагування книги: %(title)s\n"
+"            "
+
+#: bookshop/templates/book_create.html:11
+msgid "Додавання нової книги"
+msgstr "Додавання нової книги"
+
+#: bookshop/templates/book_create.html:18
+msgid "Зберегти книгу"
+msgstr "Зберегти книгу"
+
+#: bookshop/templates/book_detail.html:7
+msgid "Автор:"
+msgstr "Автор:"
+
+#: bookshop/templates/book_detail.html:10
+msgid "Ціна:"
+msgstr "Ціна:"
+
+#: bookshop/templates/book_detail.html:11
+#, python-format
+msgid ""
+"\n"
+"            %(price)s грн.\n"
+"        "
+msgstr ""
+"\n"
+"            %(price)s грн.\n"
+"        "
+
+#: bookshop/templates/book_detail.html:16
+msgid "Опис:"
+msgstr "Опис:"
+
+#: bookshop/templates/book_detail.html:22
+msgid "Додати в кошик"
+msgstr "Додати в кошик"
+
+#: bookshop/templates/book_detail.html:28
+msgid "Редагувати книгу"
+msgstr "Редагувати книгу"
+
+#: bookshop/templates/book_detail.html:31
+msgid "Видалити книгу"
+msgstr "Видалити книгу"
+
+#: bookshop/templates/book_detail.html:38
+msgid "Назад"
+msgstr "Назад"
+
+#: bookshop/templates/book_detail.html:42
+msgid "Вперед"
+msgstr "Вперед"
+
+#: bookshop/templates/book_list.html:4 bookshop/templates/book_list.html:7
+msgid "Список книг"
+msgstr "Список книг"
+
+#: bookshop/templates/book_list.html:12
+msgid "Ціна"
+msgstr "Ціна"
+
+#: bookshop/templates/book_list.html:12
+msgid "грн"
+msgstr "грн"
+
+#: bookshop/templates/book_list.html:15 bookshop/templates/index.html:18
+msgid "Книг поки немає в базі."
+msgstr "Книг поки немає в базі."
+
+#: bookshop/templates/cart_detail.html:7
+#, python-format
+msgid "%(total)s грн"
+msgstr "%(total)s грн"
+
+#: bookshop/templates/cart_detail.html:8
+msgid "видалити"
+msgstr "видалити"
+
+#: bookshop/templates/cart_detail.html:11
+msgid "Загалом:"
+msgstr "Загалом:"
+
+#: bookshop/templates/cart_detail.html:11
+#, python-format
+msgid "%(total_cart)s грн"
+msgstr "%(total_cart)s грн"
+
+#: bookshop/templates/cart_detail.html:12
+msgid "Оформити"
+msgstr "Оформити"
+
+#: bookshop/templates/categories.html:2
+msgid "Категорія книг"
+msgstr "Категорія книг"
+
+#: bookshop/templates/categories.html:5
+msgid "Категорії книг"
+msgstr "Категорії книг"
+
+#: bookshop/templates/categories.html:10
+#, python-format
+msgid ""
+"\n"
+"                    Кількість книг дорожче 300 грн: %(count)s\n"
+"                "
+msgstr ""
+"\n"
+"                    Кількість книг дорожче 300 грн: %(count)s\n"
+"                "
+
+#: bookshop/templates/categories.html:15
+msgid "Категорій не знайдено."
+msgstr "Категорій не знайдено."
+
+#: bookshop/templates/index.html:2
+msgid "Головна — Каталог книг"
+msgstr "Головна — Каталог книг"
+
+#: bookshop/templates/index.html:5
+msgid "Каталог книг"
+msgstr "Каталог книг"
+
+#: bookshop/templates/index.html:11
+#, python-format
+msgid ""
+"\n"
+"                    Ціна: %(price)s грн.\n"
+"                "
+msgstr ""
+"\n"
+"                    Ціна: %(price)s грн.\n"
+"                "
+
+#: bookshop/templates/order_create.html:6
+msgid "Ім\\"
+msgstr "Ім'я"
+
+#: bookshop/templates/order_create.html:7
+msgid "Прізвище"
+msgstr "Прізвище"
+
+#: bookshop/templates/order_create.html:9
+msgid "Адреса"
+msgstr "Адреса"
+
+#: bookshop/templates/order_create.html:10
+msgid "Замовити"
+msgstr "Замовити"
+
+#: bookshop/templates/order_success.html:5
+#, python-format
+msgid ""
+"\n"
+"        Замовлення #%(id)s оформлено!\n"
+"    "
+msgstr ""
+"\n"
+"        Замовлення #%(id)s оформлено!\n"
+"    "
+
+#: mysite/settings.py:24
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: mysite/settings.py:25
+msgid "English"
+msgstr "Англійська"
+
+#: users/models.py:6
+msgid "Phone Number"
+msgstr "Номер телефону"
+
+#: users/models.py:7
+msgid "Avatar"
+msgstr "Аватар"
+
+#: users/models.py:10
+msgid "User"
+msgstr "Користувач"
+
+#: users/models.py:11
+msgid "Users"
+msgstr "Користувачі"
+
+#: users/templates/login.html:7
+msgid "Вхід"
+msgstr "Вхід"
+
+#: users/templates/login.html:18
+msgid "Увійти через Google"
+msgstr "Увійти через Google"
+
+#: users/templates/login.html:21 users/templates/register.html:14
+msgid "Повернутися"
+msgstr "Повернутися"
+
+#: users/templates/profile.html:5
+msgid "Мій профіль"
+msgstr "Мій профіль"
+
+#: users/templates/profile.html:9
+#, python-format
+msgid ""
+"\n"
+"            Особисті дані користувача %(username)s\n"
+"        "
+msgstr ""
+"\n"
+"            Особисті дані користувача %(username)s\n"
+"        "
+
+#: users/templates/profile.html:16
+msgid "Аватар"
+msgstr "Аватар"
+
+#: users/templates/profile.html:19
+msgid "(Аватар ще не завантажено)"
+msgstr "(Аватар ще не завантажено)"
+
+#: users/templates/profile.html:25
+msgid "Зберегти зміни"
+msgstr "Зберегти зміни"
+
+#: users/templates/profile.html:29
+msgid "На головну сторінку"
+msgstr "На головну сторінку"
+
+#: users/templates/register.html:12
+msgid "Зареєструватися"
+msgstr "Зареєструватися"

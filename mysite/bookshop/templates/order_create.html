@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% block content %}
+{% load i18n %} {% block content %}
 
 <form method="post">
     {% csrf_token %}
-    <input name="first_name" placeholder="Ім'я" required>
-    <input name="last_name" placeholder="Прізвище" required>
-    <input name="email" type="email" placeholder="Email" required>
-    <input name="address" placeholder="Адреса" required>
-    <button type="submit">Замовити</button>
+    <input name="first_name" placeholder="{% trans 'Ім\'я' %}" required>
+    <input name="last_name" placeholder="{% trans 'Прізвище' %}" required>
+    <input name="email" type="email" placeholder="{% trans 'Email' %}" required>
+    <input name="address" placeholder="{% trans 'Адреса' %}" required>
+    <button type="submit">{% trans "Замовити" %}</button>
 </form>
 
 {% endblock %}

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
-{% block content %}
+{% load i18n %} {% block content %}
 
-<h1>Замовлення #{{ order.id }} оформлено!</h1>
+<h1>
+    {% blocktrans with id=order.id %}
+        Замовлення #{{ id }} оформлено!
+    {% endblocktrans %}
+</h1>
 
 {% endblock %}

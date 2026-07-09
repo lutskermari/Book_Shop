@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Список книг{% endblock %}
+{% block title %}{% trans "Список книг" %}{% endblock %}
 
 {% block content %}
-    <h2>Список книг</h2>
+    <h2>{% trans "Список книг" %}</h2>
     <ul>
         {% for book in book_list %}
             <li>
                 <a href="{% url 'book_detail' book.pk %}"><strong>{{ book.title }}</strong></a> — {{ book.author }}<br>
-                Ціна: {{ book.price }} грн.
+                {% trans "Ціна" %}: {{ book.price }} {% trans "грн" %}.
             </li>
         {% empty %}
-            <li>Книг поки немає в базі.</li>
+            <li>{% trans "Книг поки немає в базі." %}</li>
         {% endfor %}
     </ul>
-{% endblock content%}
+{% endblock content %}

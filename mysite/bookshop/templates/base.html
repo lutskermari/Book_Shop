@@ -1,37 +1,38 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Магазин книг{% endblock %}</title>
+    <title>{% block title %}{% trans "Магазин книг" %}{% endblock %}</title>
 </head>
 <body>
     <header>
-        <h1>Книжковий магазин</h1>
+        <h1>{% trans "Книжковий магазин" %}</h1>
         <nav>
             <form method="get" action="{% url 'book_list' %}">
-                <input type="text" name="search" placeholder="Пошук книги" value="{{ request.GET.search }}">
-                <button type="submit">Пошук</button>
+                <input type="text" name="search" placeholder="{% trans 'Пошук книги' %}" value="{{ request.GET.search }}">
+                <button type="submit">{% trans "Пошук" %}</button>
             </form>
             
-            <a href="{% url 'index' %}">Головна</a> |
-            <a href="{% url 'book_list' %}">Всі книги</a> |
-            <a href="{% url 'category' %}">Категорії</a> |
+            <a href="{% url 'index' %}">{% trans "Головна" %}</a> |
+            <a href="{% url 'book_list' %}">{% trans "Всі книги" %}</a> |
+            <a href="{% url 'category' %}">{% trans "Категорії" %}</a> |
 
             {% if perms.bookshop.add_book %}
-                <a href="{% url 'book_create' %}">Додати книгу</a> |
+                <a href="{% url 'book_create' %}">{% trans "Додати книгу" %}</a> |
             {% endif %}
             
             {% if request.user.is_authenticated %}
-                <a href="{% url 'logout' %}">Вийти</a> |
-                <a href="{% url 'cart_detail' %}">Кошик</a> |
+                <a href="{% url 'logout' %}">{% trans "Вийти" %}</a> |
+                <a href="{% url 'cart_detail' %}">{% trans "Кошик" %}</a> |
             {% else %}
-                <a href="{% url 'login' %}">Зайти</a> |
-                <a href="{% url 'register' %}">Реєстрація</a> |
+                <a href="{% url 'login' %}">{% trans "Зайти" %}</a> |
+                <a href="{% url 'register' %}">{% trans "Реєстрація" %}</a> |
             {% endif %}
 
             {% if request.user.is_authenticated %}
-                <a href="{% url 'profile' %}">Профіль</a>
+                <a href="{% url 'profile' %}">{% trans "Профіль" %}</a>
             {% endif %}
         </nav>
         <hr>
