@@ -61,6 +61,17 @@ class TestOrderModel:
         order = OrderFactory()
         assert order.created_at is not None
 
+    def test_order_email_field(self):
+        #Перевіряє що email зберігається коректно в моделі Order
+        order = OrderFactory(email="test@example.com")
+        assert order.email == "test@example.com"
+
+    def test_order_first_last_name(self):
+        #Перевіряє що ім'я та прізвище зберігаються коректно
+        order = OrderFactory(first_name="Марія", last_name="Луцкер")
+        assert order.first_name == "Марія"
+        assert order.last_name == "Луцкер"
+
 
 @pytest.mark.django_db
 class TestOrderItemModel:
@@ -77,3 +88,9 @@ class TestOrderItemModel:
     def test_quantity_default(self):
         item = OrderItemFactory()
         assert item.quantity == 1
+
+    def test_order_item_order_relation(self):
+        #Перевіряє що OrderItem правильно пов'язаний з Order через ForeignKey
+        order = OrderFactory()
+        item = OrderItemFactory(order=order)
+        assert item.order == order
