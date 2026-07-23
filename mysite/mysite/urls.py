@@ -23,9 +23,30 @@ from users import views as users_views
 from django.conf import settings 
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
+from bookshop import api_views
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
+
+router = DefaultRouter()
+router.register(r'categories', api_views.CategoryViewSet, basename='api_categories')
+router.register(r'books', api_views.BookViewSet, basename='api_books')
+router.register(r'orders', api_views.OrderViewSet, basename='api_orders')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),]
+    path('admin/', admin.site.urls),
+
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'), # 🔥 Документація тут!
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+
+    path('api/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+
+    path('api/', include(router.urls)),
+    path('api/cart/', api_views.CartAPIView.as_view(), name='api_cart'),
+]
 
 urlpatterns += i18n_patterns(
     path('accounts/', include('allauth.urls')),
@@ -49,10 +70,6 @@ urlpatterns += i18n_patterns(
     path("cart/clear/", views.cart_clear, name="cart_clear"),
     path("order/create/", views.order_create, name="order_create"),
     path("order/success/", views.order_success, name="order_success"),
-
-    path("api/books/", async_views.async_book_list, name="api_book_list"),
-    path("api/books/<int:pk>/", async_views.async_book_detail, name="api_book_detail"),
-    path("api/stats/", async_views.async_catalog_stats, name="api_catalog_stats"),
 )
 
 if settings.DEBUG:
