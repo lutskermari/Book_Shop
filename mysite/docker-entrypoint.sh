@@ -19,4 +19,4 @@ python manage.py migrate --noinput
 python manage.py collectstatic --noinput
 
 echo "Запуск сервера..."
-exec uvicorn mysite.asgi:application --host 0.0.0.0 --port 8000 --reload
+exec gunicorn mysite.wsgi:application --bind 0.0.0.0:8000 --workers 3

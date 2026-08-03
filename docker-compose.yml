@@ -1,5 +1,4 @@
 services:
-
   db:
     image: postgres:16-alpine
     env_file: .env
@@ -28,17 +27,57 @@ services:
   web:
     build: ./mysite
     env_file: .env
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             gunicorn mysite.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./mysite:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/media
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     depends_on:
       db:
         condition: service_healthy
       redis:
         condition: service_healthy
+
+  celery_worker:
+    build: ./mysite
+    env_file: .env
+    command: celery -A mysite worker --loglevel=info
+    volumes:
+      - ./mysite:/app
+      - media_volume:/app/media
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  celery_beat:
+    build: ./mysite
+    env_file: .env
+    command: celery -A mysite beat --loglevel=info
+    volumes:
+      - ./mysite:/app
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    depends_on:
+      - web
 
 volumes:
   postgres_data:

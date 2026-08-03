@@ -7,6 +7,8 @@ from django.db.models import Q, Count
 from django.db import transaction
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.decorators.http import require_POST
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 from .cart import Cart
 from django.core.mail import send_mail
 import logging
@@ -16,6 +18,11 @@ logger = logging.getLogger("bookshop")
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+@cache_page(60 * 15)
+def index(request):
+    result = Book.objects.all()
+    logger.info(f"Головна | user: {request.user}")
+    return render(request, "index.html", {"books": result})
 
 def index(request):
     """
@@ -108,6 +115,18 @@ class BookDetailView(DetailView):
     template_name = "book_detail.html"
     context_object_name = "book"
     pk_url_kwarg = 'pk'
+
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get(self.pk_url_kwarg)
+        cache_key = f"book_detail_{pk}"
+
+        book = cache.get(cache_key)
+
+        if not book:
+            book = super().get_object(queryset)
+            cache.set(cache_key, book, 3600)
+
+        return book
 
     def get_context_data(self, **kwargs):
         """
