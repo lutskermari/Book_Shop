@@ -96,7 +96,9 @@ jobs:
       - name: Run tests
         run: |
           cd mysite
-          PYTHONPATH=..:. pytest tests/ --cov=bookshop --cov-report=term-missing --cov-fail-under=60 -v
+          pytest tests/ --cov=bookshop --cov-report=term-missing --cov-fail-under=60 -v
+        env:
+          PYTHONPATH: ..:.
           
   docker:
     name: Build & Push Docker
