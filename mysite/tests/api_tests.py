@@ -49,7 +49,8 @@ def regular_auth_client(api_client, regular_user):
 def category_factory():
     def make_category(name="Фантастика", slug=None):
         if not slug:
-            slug = f"cat-{Category.objects.count() + 1}"
+            count = Category.objects.count() + 1
+            slug = f"cat-{count}-{Category.objects.order_by('-id').first().id if Category.objects.exists() else 0}"
         return Category.objects.create(name=name, slug=slug)
 
     return make_category
