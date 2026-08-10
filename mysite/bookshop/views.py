@@ -1,11 +1,20 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 from django.urls import reverse_lazy, reverse
 from django.conf import settings
 from .models import Book, Category, Order, OrderItem
 from django.db.models import Q, Count
 from django.db import transaction, connection
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    PermissionRequiredMixin,
+)
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.cache import cache_page
@@ -19,11 +28,13 @@ logger = logging.getLogger("bookshop")
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+
 @cache_page(60 * 15)
 def index(request):
     result = Book.objects.all()
     logger.info(f"Головна | user: {request.user}")
     return render(request, "index.html", {"books": result})
+
 
 def health_check(request):
     try:
@@ -33,6 +44,7 @@ def health_check(request):
         db_status = "error"
 
     from django.core.cache import cache
+
     try:
         cache.set("health", "ok", 10)
         cache_status = "ok" if cache.get("health") == "ok" else "error"
@@ -41,28 +53,14 @@ def health_check(request):
 
     status = "ok" if db_status == "ok" and cache_status == "ok" else "error"
 
-    return JsonResponse({
-        "status": status,
-        "database": db_status,
-        "cache": cache_status,
-    }, status=200 if status == "ok" else 503)
-
-def index(request):
-    """
-    Відображає головну сторінку каталогу книг.
-
-    Отримує всі книги з бази даних та передає їх у шаблон.
-    Логує кожне відвідування сторінки.
-
-    Args:
-        request: HTTP запит.
-
-    Returns:
-        HttpResponse: Відрендерений шаблон index.html зі списком книг.
-    """
-    result = Book.objects.all()
-    logger.info(f"Головна | user: {request.user}")
-    return render(request, "index.html", {'books': result})
+    return JsonResponse(
+        {
+            "status": status,
+            "database": db_status,
+            "cache": cache_status,
+        },
+        status=200 if status == "ok" else 503,
+    )
 
 
 def category_list(request):
@@ -79,10 +77,10 @@ def category_list(request):
         HttpResponse: Відрендерений шаблон categories.html зі списком категорій.
     """
     categories = Category.objects.annotate(
-        books_count=Count('book', filter=Q(book__price__gt=300))
+        books_count=Count("book", filter=Q(book__price__gt=300))
     ).filter(books_count__gt=0)
     logger.info(f"Категорії | user: {request.user}")
-    return render(request, "categories.html", {'categories': categories})
+    return render(request, "categories.html", {"categories": categories})
 
 
 class BookListView(ListView):
@@ -110,7 +108,7 @@ class BookListView(ListView):
             QuerySet: Відфільтрований список книг.
         """
         queryset = super().get_queryset()
-        query = self.request.GET.get('search')
+        query = self.request.GET.get("search")
 
         if query:
             queryset = queryset.filter(
@@ -137,7 +135,7 @@ class BookDetailView(DetailView):
     model = Book
     template_name = "book_detail.html"
     context_object_name = "book"
-    pk_url_kwarg = 'pk'
+    pk_url_kwarg = "pk"
 
     def get_object(self, queryset=None):
         pk = self.kwargs.get(self.pk_url_kwarg)
@@ -159,14 +157,16 @@ class BookDetailView(DetailView):
             dict: Контекст з даними книги та сусідніми книгами.
         """
         context = super().get_context_data(**kwargs)
-        logger.info(f"Книга: '{self.object.title}' | user: {self.request.user}")
+        logger.info(
+            f"Книга: '{self.object.title}' | user: {self.request.user}"
+        )
         current_book = self.object
-        context["previous_book"] = Book.objects.filter(
-            id__lt=current_book.id
-        ).order_by("-id").first()
-        context["next_book"] = Book.objects.filter(
-            id__gt=current_book.id
-        ).order_by("id").first()
+        context["previous_book"] = (
+            Book.objects.filter(id__lt=current_book.id).order_by("-id").first()
+        )
+        context["next_book"] = (
+            Book.objects.filter(id__gt=current_book.id).order_by("id").first()
+        )
         return context
 
 
@@ -183,9 +183,16 @@ class BookCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
     model = Book
     template_name = "book_create.html"
-    fields = ['title', 'author', 'category', 'price', 'published_date', 'description']
-    success_url = reverse_lazy('index')
-    permission_required = 'bookshop.add_book'
+    fields = [
+        "title",
+        "author",
+        "category",
+        "price",
+        "published_date",
+        "description",
+    ]
+    success_url = reverse_lazy("index")
+    permission_required = "bookshop.add_book"
 
     def form_valid(self, form):
         """
@@ -197,7 +204,9 @@ class BookCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         Returns:
             HttpResponse: Перенаправлення на success_url.
         """
-        logger.info(f"Створено книгу: '{form.instance.title}' | user: {self.request.user}")
+        logger.info(
+            f"Створено книгу: '{form.instance.title}' | user: {self.request.user}"
+        )
         return super().form_valid(form)
 
 
@@ -213,9 +222,16 @@ class BookUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
     model = Book
     template_name = "book_create.html"
-    fields = ['title', 'author', 'category', 'price', 'published_date', 'description']
-    success_url = reverse_lazy('index')
-    permission_required = 'bookshop.change_book'
+    fields = [
+        "title",
+        "author",
+        "category",
+        "price",
+        "published_date",
+        "description",
+    ]
+    success_url = reverse_lazy("index")
+    permission_required = "bookshop.change_book"
 
     def form_valid(self, form):
         """
@@ -227,7 +243,9 @@ class BookUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
         Returns:
             HttpResponse: Перенаправлення на success_url.
         """
-        logger.info(f"Оновлено книгу: '{form.instance.title}' | user: {self.request.user}")
+        logger.info(
+            f"Оновлено книгу: '{form.instance.title}' | user: {self.request.user}"
+        )
         return super().form_valid(form)
 
 
@@ -244,8 +262,8 @@ class BookDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
 
     model = Book
     template_name = "book_confirm_delete.html"
-    success_url = reverse_lazy('index')
-    permission_required = 'bookshop.delete_book'
+    success_url = reverse_lazy("index")
+    permission_required = "bookshop.delete_book"
 
     def form_valid(self, form):
         """
@@ -257,7 +275,9 @@ class BookDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
         Returns:
             HttpResponse: Перенаправлення на success_url.
         """
-        logger.warning(f"Видалено книгу: '{self.object.title}' | user: {self.request.user}")
+        logger.warning(
+            f"Видалено книгу: '{self.object.title}' | user: {self.request.user}"
+        )
         return super().form_valid(form)
 
 
@@ -348,7 +368,7 @@ def order_create(request):
     """
     cart = Cart(request)
     if not cart:
-        return redirect('cart_detail')
+        return redirect("cart_detail")
 
     if request.method == "POST":
         with transaction.atomic():
@@ -365,7 +385,9 @@ def order_create(request):
                     price=item["price"],
                     quantity=item["quantity"],
                 )
-            logger.info(f"Замовлення #{order.id} створено | user: {request.user}")
+            logger.info(
+                f"Замовлення #{order.id} створено | user: {request.user}"
+            )
 
         payment_url = create_payment_session(request, order)
         cart.clear()
@@ -386,9 +408,9 @@ def create_payment_session(request, order):
         str: URL сторінки оплати Stripe.
     """
     success_url = request.build_absolute_uri(
-        reverse('order_success') + f"?order_id={order.id}"
+        reverse("order_success") + f"?order_id={order.id}"
     )
-    cancel_url = request.build_absolute_uri(reverse('cart_detail'))
+    cancel_url = request.build_absolute_uri(reverse("cart_detail"))
 
     session = stripe.checkout.Session.create(
         payment_method_types=["card"],
@@ -425,7 +447,7 @@ def order_success(request):
     Returns:
         HttpResponse: Відрендерений шаблон order_success.html.
     """
-    order = get_object_or_404(Order, id=request.GET.get('order_id'))
+    order = get_object_or_404(Order, id=request.GET.get("order_id"))
 
     if not order.paid:
         order.paid = True

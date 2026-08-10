@@ -21,7 +21,7 @@ def generate_daily_sales_report():
     today = timezone.now().date()
     today_orders = Order.objects.filter(created_at__date=today, paid=True)
     total_sales = sum(order.get_total_cost() for order in today_orders)
-    
+
     print(f"ЗВІТ ЗА {today}")
     print(f"Кількість замовлень: {today_orders.count()}")
     print(f"Загальна виручка: {total_sales} грн.")

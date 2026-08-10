@@ -18,7 +18,10 @@ class Migration(migrations.Migration):
             model_name="customuser",
             name="avatar",
             field=models.ImageField(
-                blank=True, null=True, upload_to="avatars/", verbose_name="Avatar"
+                blank=True,
+                null=True,
+                upload_to="avatars/",
+                verbose_name="Avatar",
             ),
         ),
         migrations.AlterField(

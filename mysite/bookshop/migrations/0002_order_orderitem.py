@@ -7,30 +7,76 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookshop', '0001_initial'),
+        ("bookshop", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Order',
+            name="Order",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=100, verbose_name="Ім'я")),
-                ('last_name', models.CharField(max_length=100, verbose_name='Прізвище')),
-                ('email', models.EmailField(max_length=254, verbose_name='Email')),
-                ('address', models.CharField(max_length=255, verbose_name='Адреса')),
-                ('paid', models.BooleanField(default=False, verbose_name='Оплачено')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(max_length=100, verbose_name="Ім'я"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(max_length=100, verbose_name="Прізвище"),
+                ),
+                (
+                    "email",
+                    models.EmailField(max_length=254, verbose_name="Email"),
+                ),
+                (
+                    "address",
+                    models.CharField(max_length=255, verbose_name="Адреса"),
+                ),
+                (
+                    "paid",
+                    models.BooleanField(
+                        default=False, verbose_name="Оплачено"
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
         ),
         migrations.CreateModel(
-            name='OrderItem',
+            name="OrderItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=8)),
-                ('quantity', models.PositiveIntegerField(default=1)),
-                ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='bookshop.book')),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='bookshop.order')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("price", models.DecimalField(decimal_places=2, max_digits=8)),
+                ("quantity", models.PositiveIntegerField(default=1)),
+                (
+                    "book",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="bookshop.book",
+                    ),
+                ),
+                (
+                    "order",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="items",
+                        to="bookshop.order",
+                    ),
+                ),
             ],
         ),
     ]

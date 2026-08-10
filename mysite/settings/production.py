@@ -1,3 +1,4 @@
+# flake8: noqa
 from .base import *
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -22,7 +23,7 @@ CACHES = {
     }
 }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"

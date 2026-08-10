@@ -21,7 +21,11 @@ def register_view(request):
             regular_group = Group.objects.get(name="Regular Users")
             user.groups.add(regular_group)
 
-            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+            login(
+                request,
+                user,
+                backend="django.contrib.auth.backends.ModelBackend",
+            )
             return redirect(reverse("index"))
     else:
         form = CustomUserCreationForm()
@@ -52,7 +56,9 @@ def logout_view(request):
 @login_required
 def profile_view(request):
     if request.method == "POST":
-        form = UserProfileForm(request.POST, request.FILES, instance=request.user)
+        form = UserProfileForm(
+            request.POST, request.FILES, instance=request.user
+        )
         if form.is_valid():
             form.save()
             return redirect("profile")

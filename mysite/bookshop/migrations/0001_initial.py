@@ -7,29 +7,82 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Category Name')),
-                ('slug', models.SlugField(max_length=100, unique=True, verbose_name='Slug')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        max_length=100, verbose_name="Category Name"
+                    ),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        max_length=100, unique=True, verbose_name="Slug"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Book',
+            name="Book",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='Book Title')),
-                ('author', models.CharField(max_length=200, verbose_name='Author')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Price')),
-                ('description', models.TextField(verbose_name='Description')),
-                ('published_date', models.DateField(blank=True, null=True, verbose_name='Published Date')),
-                ('stock', models.BooleanField(default=True, verbose_name='Stock Status')),
-                ('category', models.ManyToManyField(to='bookshop.category', verbose_name='Category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        max_length=100, verbose_name="Book Title"
+                    ),
+                ),
+                (
+                    "author",
+                    models.CharField(max_length=200, verbose_name="Author"),
+                ),
+                (
+                    "price",
+                    models.DecimalField(
+                        decimal_places=2, max_digits=10, verbose_name="Price"
+                    ),
+                ),
+                ("description", models.TextField(verbose_name="Description")),
+                (
+                    "published_date",
+                    models.DateField(
+                        blank=True, null=True, verbose_name="Published Date"
+                    ),
+                ),
+                (
+                    "stock",
+                    models.BooleanField(
+                        default=True, verbose_name="Stock Status"
+                    ),
+                ),
+                (
+                    "category",
+                    models.ManyToManyField(
+                        to="bookshop.category", verbose_name="Category"
+                    ),
+                ),
             ],
         ),
     ]

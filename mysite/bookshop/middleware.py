@@ -3,10 +3,11 @@ import time
 
 logger = logging.getLogger("bookshop")
 
-class RequestLoggingMiddleware():
+
+class RequestLoggingMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
-    
+
     def __call__(self, request):
         start = time.time()
 
@@ -18,14 +19,13 @@ class RequestLoggingMiddleware():
 
         response = self.get_response(request)
 
-        duration = (time.time() - start) * 1000 
+        duration = (time.time() - start) * 1000
         logger.info(
-            f"{response.status_code} {request.path} | "
-            f"{duration:.1f}ms"
+            f"{response.status_code} {request.path} | " f"{duration:.1f}ms"
         )
 
         return response
-    
+
     def _get_ip(self, request):
         forwarded = request.META.get("HTTP_X_FORWARDED_FOR")
         if forwarded:
