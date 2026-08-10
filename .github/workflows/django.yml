@@ -64,7 +64,7 @@ jobs:
           --health-retries 5
 
     env:
-      DJANGO_SETTINGS_MODULE: mysite.settings.development
+      DJANGO_SETTINGS_MODULE: settings.development
       SECRET_KEY: test-secret-key-for-ci
       POSTGRES_DB: bookshop_test
       POSTGRES_USER: bookshop_user
