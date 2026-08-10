@@ -74,6 +74,7 @@ jobs:
       REDIS_URL: redis://localhost:6379/0
       STRIPE_SECRET_KEY: sk_test_dummy
       DEBUG: "True"
+      PYTHONPATH: .
 
     steps:
       - uses: actions/checkout@v4
@@ -95,7 +96,7 @@ jobs:
       - name: Run tests
         run: |
           cd mysite
-          pytest tests/ --cov=bookshop --cov-report=term-missing --cov-fail-under=60 -v
+          PYTHONPATH=..:. pytest tests/ --cov=bookshop --cov-report=term-missing --cov-fail-under=60 -v
 
   docker:
     name: Build & Push Docker
