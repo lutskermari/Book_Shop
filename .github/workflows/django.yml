@@ -95,10 +95,10 @@ jobs:
           python manage.py migrate --noinput
 
       - name: Run tests
-        env:
-          PYTHONPATH: mysite:.
         run: |
-          pytest mysite/tests/ --cov=bookshop --cov-report=term-missing --cov-fail-under=60 -v
+          pytest mysite/tests/ --cov=mysite/bookshop --cov-report=term-missing --cov-fail-under=60 -v
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/mysite
 
   docker:
     name: Build & Push Docker
