@@ -1,5 +1,4 @@
 import pytest
-from rest_framework.settings import api_settings
 
 
 @pytest.fixture(autouse=True)
