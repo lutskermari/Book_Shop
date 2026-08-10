@@ -95,9 +95,10 @@ jobs:
           python manage.py migrate --noinput
 
       - name: Run tests
+        env:
+          PYTHONPATH: mysite:.
         run: |
-          cd mysite
-          PYTHONPATH=..:. pytest tests/ --cov=bookshop --cov-report=term-missing --cov-fail-under=60 -v
+          pytest mysite/tests/ --cov=bookshop --cov-report=term-missing --cov-fail-under=60 -v
 
   docker:
     name: Build & Push Docker
