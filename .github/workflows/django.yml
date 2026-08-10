@@ -86,6 +86,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd mysite
+          pip uninstall -y jwt PyJWT
           pip install -r requirements.txt
 
       - name: Run migrations

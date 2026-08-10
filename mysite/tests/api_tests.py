@@ -33,6 +33,19 @@ def admin_client(api_client, admin_user):
 
 
 @pytest.fixture
+def regular_user(user_factory):
+    """Звичайний авторизований користувач без адмін-прав"""
+    return user_factory(username="regular_user", is_staff=False, is_superuser=False)
+
+
+@pytest.fixture
+def regular_auth_client(api_client, regular_user):
+    """Клієнт для звичайного користувача (для перевірки 403 Forbidden)"""
+    api_client.force_authenticate(user=regular_user)
+    return api_client
+
+
+@pytest.fixture
 def category_factory():
     def make_category(name="Фантастика", slug=None):
         if not slug:
