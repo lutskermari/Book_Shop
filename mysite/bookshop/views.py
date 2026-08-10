@@ -4,8 +4,9 @@ from django.urls import reverse_lazy, reverse
 from django.conf import settings
 from .models import Book, Category, Order, OrderItem
 from django.db.models import Q, Count
-from django.db import transaction
+from django.db import transaction, connection
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.cache import cache_page
 from django.core.cache import cache
@@ -23,6 +24,28 @@ def index(request):
     result = Book.objects.all()
     logger.info(f"Головна | user: {request.user}")
     return render(request, "index.html", {"books": result})
+
+def health_check(request):
+    try:
+        connection.ensure_connection()
+        db_status = "ok"
+    except Exception:
+        db_status = "error"
+
+    from django.core.cache import cache
+    try:
+        cache.set("health", "ok", 10)
+        cache_status = "ok" if cache.get("health") == "ok" else "error"
+    except Exception:
+        cache_status = "error"
+
+    status = "ok" if db_status == "ok" and cache_status == "ok" else "error"
+
+    return JsonResponse({
+        "status": status,
+        "database": db_status,
+        "cache": cache_status,
+    }, status=200 if status == "ok" else 503)
 
 def index(request):
     """

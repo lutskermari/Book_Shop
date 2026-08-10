@@ -171,3 +171,9 @@ Include Args and Returns sections.
 ```
 
 ---
+
+![CI/CD](https://github.com/lutskermari/Book_Shop/actions/workflows/django.yml/badge.svg)
+![Coverage](https://img.shields.io/badge/coverage-83%25-brightgreen)
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![Django](https://img.shields.io/badge/django-6.0-green)
+![Docker](https://img.shields.io/badge/docker-ready-blue)

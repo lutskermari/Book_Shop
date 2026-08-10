@@ -19,4 +19,12 @@ python manage.py migrate --noinput
 python manage.py collectstatic --noinput
 
 echo "Запуск сервера..."
-exec gunicorn mysite.wsgi:application --bind 0.0.0.0:8000 --workers 3
+exec gunicorn mysite.wsgi:application \
+    --chdir /app \
+    --bind 0.0.0.0:8000 \
+    --workers 3 \
+    --timeout 120 \
+    --env DJANGO_SETTINGS_MODULE=settings.development \
+    --access-logfile - \
+    --error-logfile - \
+    --log-level info

@@ -27,6 +27,8 @@ services:
   web:
     build: ./mysite
     env_file: .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=settings.development
     command: >
       sh -c "python manage.py collectstatic --noinput &&
              python manage.py migrate &&
@@ -46,6 +48,8 @@ services:
   celery_worker:
     build: ./mysite
     env_file: .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=settings.development
     command: celery -A mysite worker --loglevel=info
     volumes:
       - ./mysite:/app
@@ -59,6 +63,8 @@ services:
   celery_beat:
     build: ./mysite
     env_file: .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=settings.development
     command: celery -A mysite beat --loglevel=info
     volumes:
       - ./mysite:/app

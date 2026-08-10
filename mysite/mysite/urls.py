@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from bookshop import views as catalog_views
 from bookshop import views, async_views
-from bookshop.views import BookListView, BookDetailView, BookCreateView, BookUpdateView, BookDeleteView
+from bookshop.views import BookListView, BookDetailView, BookCreateView, BookUpdateView, BookDeleteView, health_check
 from users import views as users_views
 from django.conf import settings 
 from django.conf.urls.static import static
@@ -70,6 +70,8 @@ urlpatterns += i18n_patterns(
     path("cart/clear/", views.cart_clear, name="cart_clear"),
     path("order/create/", views.order_create, name="order_create"),
     path("order/success/", views.order_success, name="order_success"),
+
+    path("health/", health_check, name="health_check"),
 )
 
 if settings.DEBUG:
