@@ -96,7 +96,5 @@ class CartAPIView(APIView):
 
             request.session["cart"] = cart
             request.session.modified = True
-            return Response(
-                {"status": "Success"}, status=status.HTTP_201_CREATED
-            )
+            return Response({"status": "Success"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

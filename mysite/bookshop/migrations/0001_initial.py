@@ -24,15 +24,11 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "name",
-                    models.CharField(
-                        max_length=100, verbose_name="Category Name"
-                    ),
+                    models.CharField(max_length=100, verbose_name="Category Name"),
                 ),
                 (
                     "slug",
-                    models.SlugField(
-                        max_length=100, unique=True, verbose_name="Slug"
-                    ),
+                    models.SlugField(max_length=100, unique=True, verbose_name="Slug"),
                 ),
             ],
         ),
@@ -50,9 +46,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "title",
-                    models.CharField(
-                        max_length=100, verbose_name="Book Title"
-                    ),
+                    models.CharField(max_length=100, verbose_name="Book Title"),
                 ),
                 (
                     "author",
@@ -73,9 +67,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "stock",
-                    models.BooleanField(
-                        default=True, verbose_name="Stock Status"
-                    ),
+                    models.BooleanField(default=True, verbose_name="Stock Status"),
                 ),
                 (
                     "category",

@@ -41,9 +41,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="order",
             name="created_at",
-            field=models.DateTimeField(
-                auto_now_add=True, verbose_name="Created At"
-            ),
+            field=models.DateTimeField(auto_now_add=True, verbose_name="Created At"),
         ),
         migrations.AlterField(
             model_name="order",
@@ -89,8 +87,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="orderitem",
             name="quantity",
-            field=models.PositiveIntegerField(
-                default=1, verbose_name="Quantity"
-            ),
+            field=models.PositiveIntegerField(default=1, verbose_name="Quantity"),
         ),
     ]

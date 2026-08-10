@@ -4,9 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name=_("Category Name"))
-    slug = models.SlugField(
-        max_length=100, unique=True, verbose_name=_("Slug")
-    )
+    slug = models.SlugField(max_length=100, unique=True, verbose_name=_("Slug"))
 
     class Meta:
         verbose_name = _("Category")
@@ -43,9 +41,7 @@ class Order(models.Model):
     email = models.EmailField(verbose_name=_("Email"))
     address = models.CharField(max_length=255, verbose_name=_("Address"))
     paid = models.BooleanField(default=False, verbose_name=_("Paid"))
-    created_at = models.DateTimeField(
-        auto_now_add=True, verbose_name=_("Created At")
-    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
 
     class Meta:
         verbose_name = _("Order")
@@ -65,15 +61,9 @@ class OrderItem(models.Model):
         related_name="items",
         verbose_name=_("Order"),
     )
-    book = models.ForeignKey(
-        Book, on_delete=models.CASCADE, verbose_name=_("Book")
-    )
-    price = models.DecimalField(
-        max_digits=8, decimal_places=2, verbose_name=_("Price")
-    )
-    quantity = models.PositiveIntegerField(
-        default=1, verbose_name=_("Quantity")
-    )
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, verbose_name=_("Book"))
+    price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name=_("Price"))
+    quantity = models.PositiveIntegerField(default=1, verbose_name=_("Quantity"))
 
     class Meta:
         verbose_name = _("Order Item")

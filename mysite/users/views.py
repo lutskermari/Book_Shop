@@ -56,9 +56,7 @@ def logout_view(request):
 @login_required
 def profile_view(request):
     if request.method == "POST":
-        form = UserProfileForm(
-            request.POST, request.FILES, instance=request.user
-        )
+        form = UserProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect("profile")

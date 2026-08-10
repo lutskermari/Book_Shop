@@ -157,9 +157,7 @@ class BookDetailView(DetailView):
             dict: Контекст з даними книги та сусідніми книгами.
         """
         context = super().get_context_data(**kwargs)
-        logger.info(
-            f"Книга: '{self.object.title}' | user: {self.request.user}"
-        )
+        logger.info(f"Книга: '{self.object.title}' | user: {self.request.user}")
         current_book = self.object
         context["previous_book"] = (
             Book.objects.filter(id__lt=current_book.id).order_by("-id").first()
@@ -385,9 +383,7 @@ def order_create(request):
                     price=item["price"],
                     quantity=item["quantity"],
                 )
-            logger.info(
-                f"Замовлення #{order.id} створено | user: {request.user}"
-            )
+            logger.info(f"Замовлення #{order.id} створено | user: {request.user}")
 
         payment_url = create_payment_session(request, order)
         cart.clear()

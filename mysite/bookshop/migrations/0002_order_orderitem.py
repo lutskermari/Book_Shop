@@ -41,9 +41,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "paid",
-                    models.BooleanField(
-                        default=False, verbose_name="Оплачено"
-                    ),
+                    models.BooleanField(default=False, verbose_name="Оплачено"),
                 ),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
             ],

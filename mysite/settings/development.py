@@ -9,9 +9,7 @@ if "debug_toolbar" not in INSTALLED_APPS:
     INSTALLED_APPS += ["debug_toolbar"]
 
 if "debug_toolbar.middleware.DebugToolbarMiddleware" not in MIDDLEWARE:
-    MIDDLEWARE = [
-        "debug_toolbar.middleware.DebugToolbarMiddleware"
-    ] + MIDDLEWARE
+    MIDDLEWARE = ["debug_toolbar.middleware.DebugToolbarMiddleware"] + MIDDLEWARE
 
 INTERNAL_IPS = ["127.0.0.1", "172.18.0.1", "172.17.0.1"]
 

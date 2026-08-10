@@ -16,18 +16,14 @@ def api_client():
 @pytest.fixture
 def user_factory():
     def make_user(username="test_user", password="password123", **kwargs):
-        return User.objects.create_user(
-            username=username, password=password, **kwargs
-        )
+        return User.objects.create_user(username=username, password=password, **kwargs)
 
     return make_user
 
 
 @pytest.fixture
 def admin_user(user_factory):
-    return user_factory(
-        username="admin_user", is_staff=True, is_superuser=True
-    )
+    return user_factory(username="admin_user", is_staff=True, is_superuser=True)
 
 
 @pytest.fixture
@@ -92,9 +88,7 @@ def auth_client(api_client, user_factory):
 def test_jwt_obtain_token_success(api_client, user_factory):
     user_factory(username="jwt_user", password="password123")
     url = reverse("token_obtain_pair")
-    response = api_client.post(
-        url, {"username": "jwt_user", "password": "password123"}
-    )
+    response = api_client.post(url, {"username": "jwt_user", "password": "password123"})
     assert response.status_code == status.HTTP_200_OK
     assert "access" in response.data
     assert "refresh" in response.data
@@ -119,9 +113,7 @@ def test_jwt_verify_token(api_client, user_factory):
     )
     access_token = token_res.data["access"]
 
-    verify_res = api_client.post(
-        reverse("token_verify"), {"token": access_token}
-    )
+    verify_res = api_client.post(reverse("token_verify"), {"token": access_token})
     assert verify_res.status_code == status.HTTP_200_OK
 
 
@@ -134,9 +126,7 @@ def test_jwt_refresh_token(api_client, user_factory):
     )
     refresh_token = token_res.data["refresh"]
 
-    refresh_res = api_client.post(
-        reverse("token_refresh"), {"refresh": refresh_token}
-    )
+    refresh_res = api_client.post(reverse("token_refresh"), {"refresh": refresh_token})
     assert refresh_res.status_code == status.HTTP_200_OK
     assert "access" in refresh_res.data
 
@@ -232,9 +222,7 @@ def test_delete_book_authenticated(auth_client, book_factory):
 @pytest.mark.django_db
 def test_regular_user_cannot_create_category(regular_auth_client):
     url = reverse("api_categories-list")
-    response = regular_auth_client.post(
-        url, {"name": "Sci-Fi", "slug": "sci-fi"}
-    )
+    response = regular_auth_client.post(url, {"name": "Sci-Fi", "slug": "sci-fi"})
     assert response.status_code == status.HTTP_403_FORBIDDEN
 
 

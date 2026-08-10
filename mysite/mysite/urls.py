@@ -45,9 +45,7 @@ from drf_spectacular.views import (
 )
 
 router = DefaultRouter()
-router.register(
-    r"categories", api_views.CategoryViewSet, basename="api_categories"
-)
+router.register(r"categories", api_views.CategoryViewSet, basename="api_categories")
 router.register(r"books", api_views.BookViewSet, basename="api_books")
 router.register(r"orders", api_views.OrderViewSet, basename="api_orders")
 
@@ -88,9 +86,7 @@ urlpatterns += i18n_patterns(
     path("catalog/", catalog_views.index, name="index"),
     path("catalog/categories/", catalog_views.category_list, name="category"),
     path("catalog/books/", BookListView.as_view(), name="book_list"),
-    path(
-        "catalog/books/<int:pk>/", BookDetailView.as_view(), name="book_detail"
-    ),
+    path("catalog/books/<int:pk>/", BookDetailView.as_view(), name="book_detail"),
     path("catalog/new/", BookCreateView.as_view(), name="book_create"),
     path(
         "catalog/books/<int:pk>/edit/",
@@ -116,9 +112,5 @@ urlpatterns += i18n_patterns(
 )
 
 if settings.DEBUG:
-    urlpatterns = [
-        path("__debug__/", include("debug_toolbar.urls"))
-    ] + urlpatterns
-    urlpatterns += static(
-        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-    )
+    urlpatterns = [path("__debug__/", include("debug_toolbar.urls"))] + urlpatterns
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

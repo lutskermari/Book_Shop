@@ -65,39 +65,29 @@ class TestCartFlow:
 
     def test_add_book_appears_in_cart(self, client):
         book = BookFactory(title="Тестова книга")
-        client.post(
-            reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1}
-        )
+        client.post(reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1})
         response = client.get(reverse("cart_detail"))
         assert "Тестова книга" in response.content.decode()
 
     def test_add_two_books(self, client):
         book1 = BookFactory(title="Книга А")
         book2 = BookFactory(title="Книга Б")
-        client.post(
-            reverse("cart_add", kwargs={"book_id": book1.pk}), {"quantity": 1}
-        )
-        client.post(
-            reverse("cart_add", kwargs={"book_id": book2.pk}), {"quantity": 1}
-        )
+        client.post(reverse("cart_add", kwargs={"book_id": book1.pk}), {"quantity": 1})
+        client.post(reverse("cart_add", kwargs={"book_id": book2.pk}), {"quantity": 1})
         content = client.get(reverse("cart_detail")).content.decode()
         assert "Книга А" in content
         assert "Книга Б" in content
 
     def test_remove_book_from_cart(self, client):
         book = BookFactory(title="Видалити мене")
-        client.post(
-            reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1}
-        )
+        client.post(reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1})
         client.post(reverse("cart_remove", kwargs={"book_id": book.pk}))
         content = client.get(reverse("cart_detail")).content.decode()
         assert "Видалити мене" not in content
 
     def test_clear_removes_all(self, client):
         book = BookFactory(title="Очистити")
-        client.post(
-            reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1}
-        )
+        client.post(reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1})
         client.get(reverse("cart_clear"))
         content = client.get(reverse("cart_detail")).content.decode()
         assert "Очистити" not in content
@@ -111,9 +101,7 @@ class TestOrderFlow:
 
         mock_stripe.return_value = MagicMock(url="https://stripe.com/pay")
         book = BookFactory()
-        client.post(
-            reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1}
-        )
+        client.post(reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1})
         client.post(
             reverse("order_create"),
             {
@@ -131,9 +119,7 @@ class TestOrderFlow:
 
         mock_stripe.return_value = MagicMock(url="https://stripe.com/pay")
         book = BookFactory()
-        client.post(
-            reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 2}
-        )
+        client.post(reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 2})
         client.post(
             reverse("order_create"),
             {
@@ -151,9 +137,7 @@ class TestOrderFlow:
     def test_cart_empty_after_order(self, mock_stripe, client):
         mock_stripe.return_value = MagicMock(url="https://stripe.com/pay")
         book = BookFactory(title="Після замовлення")
-        client.post(
-            reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1}
-        )
+        client.post(reverse("cart_add", kwargs={"book_id": book.pk}), {"quantity": 1})
         client.post(
             reverse("order_create"),
             {

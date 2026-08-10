@@ -35,8 +35,6 @@ class TestOrderViews:
     @patch("bookshop.views.send_mail")
     def test_order_success(self, mock_mail, client):
         order = OrderFactory()
-        response = client.get(
-            reverse("order_success") + f"?order_id={order.pk}"
-        )
+        response = client.get(reverse("order_success") + f"?order_id={order.pk}")
         assert response.status_code == 200
         assert mock_mail.called
