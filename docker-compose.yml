@@ -50,7 +50,7 @@ services:
     env_file: .env
     environment:
       - DJANGO_SETTINGS_MODULE=settings.development
-    command: celery -A mysite worker --loglevel=info
+    command: celery -A celery_app worker --loglevel=info
     volumes:
       - ./mysite:/app
       - media_volume:/app/media
@@ -65,7 +65,7 @@ services:
     env_file: .env
     environment:
       - DJANGO_SETTINGS_MODULE=settings.development
-    command: celery -A mysite beat --loglevel=info
+    command: celery -A celery_app beat --loglevel=info
     volumes:
       - ./mysite:/app
     depends_on:
