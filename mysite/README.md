@@ -1,112 +1,211 @@
-# 📚 Book Shop — Django Bookstore Project
+Set-Content -Path README.md -Encoding utf8 -Value @"
+# 📚 Book Shop & Analytics Platform — Microservices Architecture
 
-A full-featured bookstore web application built with Django, PostgreSQL, Redis, and Stripe payment integration.
+A distributed web platform consisting of two Django-based microservices: an e-commerce Bookstore (**Project A**) and a dedicated Analytics Service (**Project B**), communicating via REST API with asynchronous background task processing.
+
+![CI/CD](https://github.com/lutskermari/Book_Shop/actions/workflows/django.yml/badge.svg)
+![Coverage](https://img.shields.io/badge/coverage-83%25-brightgreen)
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![Django](https://img.shields.io/badge/django-4.2+-green)
+![DRF](https://img.shields.io/badge/DRF-3.15+-red)
+![Docker](https://img.shields.io/badge/docker-ready-blue)
+
+---
+
+## 🏗 System Architecture & Microservices
+
+\`\`\`
+                       +-------------------------------+
+                       |        NGINX (Gateway)        |
+                       +---------------+---------------+
+                                       |
+                     +-----------------+-----------------+
+                     |                                   |
+                     v (Port 8000)                       v (Port 8001)
+     +-------------------------------+   REST API    +-------------------------------+
+     |     Project A: Book Store     | ------------> |  Project B: Analytics Service |
+     |      (Django 4.2+ / Gunicorn) | (Sales Event) |    (Django REST Framework)    |
+     +---------------+---------------+               +---------------+---------------+
+                     |                                               |
+     +---------------+---------------+                               |
+     |               |               |                               |
+     v               v               v                               v
++----------+   +-----------+   +-----------+                   +-----------+
+| Postgres |   |   Redis   |   |  Celery   |                   | Postgres  |
+| (Main DB)|   | (Cache/MQ)|   | (Worker)  |                   | (Analytics|
++----------+   +-----------+   +-----------+                   +-----------+
+\`\`\`
+
+### 1. Project A — Main Bookstore (\`mysite\`)
+- **Port:** \`8000\`
+- **Core Functionality:** Book catalog, search & filtering, Many-to-Many categories, session cart, Stripe checkout, user auth & profiles.
+- **Inter-service Communication:** Dispatches real-time sales data to Project B upon completed order placement with built-in error handling and fallback logging.
+
+### 2. Project B — Analytics & Tracking Service (\`analytics_service\`)
+- **Port:** \`8001\`
+- **Core Functionality:** Dedicated microservice for processing and aggregating sales metrics, revenue analytics, and top-selling book statistics.
+- **Security:** Protected API endpoints utilizing Django REST Framework permissions (\`IsAdminUser\` / internal service secret headers).
+
+---
 
 ## 🚀 Tech Stack
 
-- **Backend:** Django 6.0, Python 3.12
-- **Database:** PostgreSQL 16
-- **Cache & Sessions:** Redis 7
-- **Payment:** Stripe Checkout
-- **Containerization:** Docker, Docker Compose
-- **Testing:** pytest, factory-boy, coverage 83%
-- **i18n:** Ukrainian + English
+- **Backend:** Django 4.2+, Django REST Framework (DRF), Python 3.12, Gunicorn
+- **Database:** PostgreSQL 16 (Independent databases for isolated services)
+- **Task Queue & Caching:** Redis 7, Celery
+- **Payment & Third-Party:** Stripe Checkout API, Google OAuth2
+- **Documentation & Tools:** Swagger / OpenAPI (\`drf-spectacular\`), Sentry SDK
+- **Containerization & Gateway:** Docker Compose, NGINX
+- **Testing & Code Quality:** pytest, factory-boy, Black, Flake8, Coverage (83%)
+- **i18n:** Ukrainian (\`uk\`) & English (\`en\`)
+
+---
 
 ## 📋 Features
 
-- Book catalog with search and categories
-- Session-based shopping cart
-- Order creation with Stripe payment
-- Email confirmation after payment
-- User registration and authentication
-- Google OAuth login
-- Role-based access (Manager / User)
-- Admin panel with inline OrderItems
-- Async views for API endpoints
-- Custom middleware (request logging, login logging)
-- Internationalization (Ukrainian/English)
+- Multi-service architecture with decoupled analytics data pipeline.
+- Book catalog with search, filtering, and Many-to-Many categories.
+- Session-based shopping cart with atomic order processing.
+- Order creation with Stripe payment and automated email confirmation.
+- Custom User model with extended profiles, avatar support, and phone numbers.
+- Google OAuth2 authentication and role-based permissions (Manager / Admin / User).
+- Internationalization (i18n) supporting Ukrainian and English.
+- Redis-backed cache layer for high-throughput endpoints.
+- Celery background workers for email delivery and async tasks.
+- Interactive OpenAPI / Swagger documentation for all API routes.
 
-## 🛠 Installation
+---
+
+## 🛠 Installation & Setup
 
 ### Requirements
 - Docker Desktop
 - Git
 
-### Setup
+### Setup Steps
 
-```bash
-# Clone repository
+\`\`\`bash
+# 1. Clone repository
 git clone https://github.com/lutskermari/Book_Shop.git
 cd Book_Shop
 
-# Create .env file
+# 2. Configure environment
 cp .env.example .env
-# Edit .env with your credentials
 
-# Build and run
+# 3. Build and launch all containers
 docker-compose up --build
-```
+\`\`\`
 
-### Access
-- App: http://localhost:8000
-- Admin: http://localhost:8000/admin (admin/admin)
+### 🔗 Service Access Points
+- **Project A (Storefront):** http://localhost:8000
+- **Project A (Admin):** http://localhost:8000/admin
+- **Project A (Swagger API Docs):** http://localhost:8000/api/docs/
+- **Project B (Analytics Summary API):** http://localhost:8001/api/analytics/summary/
+- **Project B (Analytics Admin):** http://localhost:8001/admin/
 
-## ⚙️ Environment Variables
+---
 
-```
+## ⚙️ Environment Variables (\`.env\`)
+
+\`\`\`ini
+# Core Configuration
 SECRET_KEY=your-secret-key
 DEBUG=True
+
+# Database: Project A
 POSTGRES_DB=bookshop
 POSTGRES_USER=bookshop_user
 POSTGRES_PASSWORD=bookshop_password
 POSTGRES_HOST=db
 POSTGRES_PORT=5432
+
+# Database: Project B (Analytics)
+ANALYTICS_DB_NAME=analytics_db
+ANALYTICS_DB_USER=analytics_user
+ANALYTICS_DB_PASSWORD=analytics_password
+ANALYTICS_DB_HOST=analytics_db
+ANALYTICS_DB_PORT=5432
+
+# Redis & Celery
 REDIS_URL=redis://redis:6379/0
+
+# Payment & Auth Integrations
 STRIPE_PUBLIC_KEY=pk_test_...
 STRIPE_SECRET_KEY=sk_test_...
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-```
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+\`\`\`
 
-## 🧪 Testing
+---
 
-```bash
-# Run all tests
+## 🌐 API & Inter-Service Endpoints
+
+### 🛒 Project A (Book Store)
+| Method | Endpoint | Description |
+|---|---|---|
+| \`GET\` | \`/api/schema/\` | OpenAPI schema definition |
+| \`GET\` | \`/api/docs/\` | Swagger UI documentation |
+| \`GET\` | \`/api/books/\` | List all books (JSON API) |
+| \`GET\` | \`/api/books/<id>/\` | Book detail (JSON API) |
+| \`POST\` | \`/api/auth/token/\` | JWT token obtain pair |
+| \`POST\` | \`/api/auth/token/refresh/\` | JWT token refresh |
+
+### 📊 Project B (Analytics Service)
+| Method | Endpoint | Access Level | Description |
+|---|---|---|---|
+| \`POST\` | \`/api/analytics/track-sale/\` | Internal Service | Records a completed sale transaction |
+| \`GET\` | \`/api/analytics/summary/\` | Admin / Staff | Aggregated metrics, total revenue, and top books |
+
+---
+
+## 🧪 Testing & Code Quality
+
+\`\`\`bash
+# Run pytest test suite
 docker-compose exec web pytest tests/ -v
 
-# Run with coverage
+# Run with test coverage report
 docker-compose exec web pytest tests/ --cov=bookshop --cov-report=term-missing
-```
 
-**Coverage: 83%** ✅
+# Code formatting and static lint checks
+black mysite analytics_service
+flake8 mysite analytics_service --max-line-length=88 --extend-ignore=E203,W503 --exclude=*/migrations/*
+\`\`\`
+
+---
 
 ## 📁 Project Structure
 
-```
+\`\`\`text
 Book_Shop/
-  mysite/
-    bookshop/          # Main app
-      models.py        # Book, Category, Order, OrderItem
-      views.py         # All views with docstrings
-      cart.py          # Session-based cart
-      admin.py         # Admin with inlines
-      middleware.py    # Request & login logging
-      async_views.py   # Async API views
-    users/             # Auth app
-    tests/             # pytest tests
-    locale/            # i18n translations
-  docker-compose.yml
-  AI_REVIEW.md
-  AI_PROMPTS.md
-```
-
-## 🌐 API Endpoints (Async)
-
-| URL | Description |
-|-----|-------------|
-| `/api/books/` | List all books (JSON) |
-| `/api/books/<id>/` | Book detail (JSON) |
-| `/api/stats/` | Catalog statistics (JSON) |
+├── mysite/                        # 🛒 PROJECT A: Bookstore Main Service
+│   ├── bookshop/                  # Catalog, Cart, Orders & Services
+│   │   ├── services.py            # Microservice client (HTTP to Project B)
+│   │   ├── models.py              # Book, Category, Order, OrderItem
+│   │   ├── views.py               # CBV with i18n & caching support
+│   │   ├── cart.py                # Session-based cart
+│   │   └── middleware.py          # Request & login audit logging
+│   ├── users/                     # Custom User model, profile & avatars
+│   ├── settings/                  # Modular settings (base, dev, prod)
+│   ├── locale/                    # Translation catalogs (uk / en)
+│   ├── tests/                     # Pytest test suite & factory fixtures
+│   └── manage.py
+│
+├── analytics_service/             # 📊 PROJECT B: Analytics Microservice
+│   ├── api/                       # DRF Views, Serializers, Analytics Models
+│   │   ├── models.py              # SaleAnalytics schema
+│   │   ├── views.py               # TrackSaleView, AnalyticsSummaryView
+│   │   └── permissions.py         # Custom permission classes
+│   ├── analytics/                 # Project configuration & settings
+│   └── manage.py
+│
+├── nginx/                         # Reverse proxy configuration
+├── docker-compose.yml             # Container orchestration
+├── .env.example
+├── README.md
+├── AI_REVIEW.md
+└── AI_PROMPTS.md
+\`\`\`
 
 ---
 
@@ -114,66 +213,15 @@ Book_Shop/
 
 This project used **Claude AI (claude.ai)** to improve code quality, generate tests, and create documentation.
 
----
-
 ### Code Review
-
-AI reviewed 3 complex views and suggested improvements.
-
-**Prompts used:**
-```
-Review these Django views for potential issues with error handling,
-security, and code quality. Suggest improvements.
-```
-```
-Analyze this code for security issues and edge cases.
-Check for potential double payment processing.
-```
-```
-What are the potential problems with this Django view?
-Check for missing validations and best practices.
-```
-
-**Changes applied based on AI recommendations:**
-- Replaced `Book.objects.get()` with `get_object_or_404()` to handle 404 properly
-- Moved Stripe session creation outside `transaction.atomic()` to avoid data inconsistency
-- Added `@require_POST` decorator to cart views
-- Added double payment protection in `order_success`
-
-See full details in [AI_REVIEW.md](AI_REVIEW.md)
-
----
+AI reviewed complex views and suggested optimizations:
+- Replaced direct queries with \`get_object_or_404()\` for robust error handling.
+- Moved Stripe checkout session initialization outside database transactions.
+- Added strict HTTP method decorators and double payment guardrails.
 
 ### Test Generation
-
-AI generated tests for models: `Book`, `Order`, `OrderItem`, `Category`.
-
-**Prompt used:**
-```
-Generate pytest tests for Django models: Category, Book, Order, OrderItem.
-Use factory-boy for fixtures. Include edge cases.
-Add comment "# Generated with AI, reviewed and modified" to each test.
-```
-
-All generated tests were reviewed and modified manually before use.
-
----
+AI generated test suites for models (\`Book\`, \`Order\`, \`OrderItem\`, \`Category\`) using \`factory-boy\` fixtures with full edge-case coverage.
 
 ### Documentation
-
-AI generated docstrings for all views in `bookshop/views.py`.
-
-**Prompt used:**
-```
-Generate docstrings for all views in this Django file.
-Follow Google Python Style Guide format.
-Include Args and Returns sections.
-```
-
----
-
-![CI/CD](https://github.com/lutskermari/Book_Shop/actions/workflows/django.yml/badge.svg)
-![Coverage](https://img.shields.io/badge/coverage-83%25-brightgreen)
-![Python](https://img.shields.io/badge/python-3.12-blue)
-![Django](https://img.shields.io/badge/django-6.0-green)
-![Docker](https://img.shields.io/badge/docker-ready-blue)
+Automated docstring generation conforming to the Google Python Style Guide across all view sets and handlers.
+"@

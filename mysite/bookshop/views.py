@@ -25,6 +25,7 @@ import stripe
 
 from .services import send_sale_to_analytics
 import requests
+from django.contrib.auth.decorators import user_passes_test
 
 logger = logging.getLogger("bookshop")
 
@@ -469,6 +470,13 @@ def order_success(request):
     return render(request, "order_success.html", {"order": order})
 
 
+def is_manager_or_admin(user):
+    return user.is_authenticated and (
+        user.is_staff or user.groups.filter(name="Менеджер").exists()
+    )
+
+
+@user_passes_test(is_manager_or_admin, login_url="/uk/login/")
 def analytics_dashboard(request):
     try:
         response = requests.get(
