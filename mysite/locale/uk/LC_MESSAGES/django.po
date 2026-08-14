@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-14 10:41+0000\n"
+"POT-Creation-Date: 2026-08-14 13:11+0000\n"
 "PO-Revision-Date: 2026-07-08 20:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,38 +110,36 @@ msgstr "Позиції замовлення"
 
 #: bookshop/templates/analytics.html:5
 msgid "Аналітика продажів"
-msgstr "Sales Analytics"
+msgstr "Аналітика продажів"
 
 #: bookshop/templates/analytics.html:7
 msgid "Всього продажів"
-msgstr "Total Sales"
+msgstr "Всього продажів"
 
 #: bookshop/templates/analytics.html:8
 msgid "Загальний дохід"
-msgstr "Total Revenue"
+msgstr "Загальний дохід"
 
 #: bookshop/templates/analytics.html:8 bookshop/templates/analytics.html:10
 #: bookshop/templates/book_list.html:14
 msgid "грн"
-msgstr "UAH"
+msgstr "грн"
 
 #: bookshop/templates/analytics.html:9
 msgid "Сьогодні продажів"
-msgstr "Today's Sales"
+msgstr "Сьогодні продажів"
 
 #: bookshop/templates/analytics.html:10
 msgid "Дохід сьогодні"
-msgstr "Today's Revenue"
+msgstr "Дохід сьогодні"
 
 #: bookshop/templates/analytics.html:12
-#, fuzzy
-#| msgid "Пошук книги"
 msgid "Топ-3 книги"
-msgstr "Top 3 Books"
+msgstr "Топ-3 книги"
 
 #: bookshop/templates/analytics.html:15
 msgid "шт."
-msgstr "pcs."
+msgstr "шт."
 
 #: bookshop/templates/base.html:7
 msgid "Магазин книг"
@@ -193,7 +191,7 @@ msgstr "Реєстрація"
 
 #: bookshop/templates/base.html:35
 msgid "Аналітика"
-msgstr "Analytics"
+msgstr "Аналітика"
 
 #: bookshop/templates/base.html:39
 msgid "Профіль"
@@ -394,11 +392,11 @@ msgstr ""
 "        Замовлення #%(id)s оформлено!\n"
 "    "
 
-#: settings/base.py:28
+#: settings/base.py:30
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: settings/base.py:29
+#: settings/base.py:31
 msgid "English"
 msgstr "Англійська"
 
@@ -464,3 +462,6 @@ msgstr "На головну сторінку"
 #: users/templates/register.html:12
 msgid "Зареєструватися"
 msgstr "Зареєструватися"
+
+#~ msgid "Total Revenue"
+#~ msgstr "Загальний дохід"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-14 10:42+0000\n"
+"POT-Creation-Date: 2026-08-14 13:13+0000\n"
 "PO-Revision-Date: 2026-07-08 20:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,21 +124,19 @@ msgstr "UAH"
 
 #: bookshop/templates/analytics.html:9
 msgid "Сьогодні продажів"
-msgstr ""
+msgstr "Today's Sales"
 
 #: bookshop/templates/analytics.html:10
 msgid "Дохід сьогодні"
-msgstr ""
+msgstr "Today's Revenue"
 
 #: bookshop/templates/analytics.html:12
-#, fuzzy
-#| msgid "Пошук книги"
 msgid "Топ-3 книги"
-msgstr "Search for a book"
+msgstr "Top 3 Books"
 
 #: bookshop/templates/analytics.html:15
 msgid "шт."
-msgstr ""
+msgstr "pcs."
 
 #: bookshop/templates/base.html:7
 msgid "Магазин книг"
@@ -391,11 +389,11 @@ msgstr ""
 "        Order #%(id)s has been placed!\n"
 "    "
 
-#: settings/base.py:28
+#: settings/base.py:30
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
-#: settings/base.py:29
+#: settings/base.py:31
 msgid "English"
 msgstr "English"
 
