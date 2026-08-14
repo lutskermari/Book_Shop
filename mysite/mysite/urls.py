@@ -26,6 +26,7 @@ from bookshop.views import (
     BookUpdateView,
     BookDeleteView,
     health_check,
+    analytics_dashboard
 )
 from users import views as users_views
 from django.conf import settings
@@ -56,7 +57,7 @@ urlpatterns = [
         "api/docs/",
         SpectacularSwaggerView.as_view(url_name="schema"),
         name="swagger-ui",
-    ),  # 🔥 Документація тут!
+    ),  
     path(
         "api/redoc/",
         SpectacularRedocView.as_view(url_name="schema"),
@@ -109,6 +110,8 @@ urlpatterns += i18n_patterns(
     path("order/create/", views.order_create, name="order_create"),
     path("order/success/", views.order_success, name="order_success"),
     path("health/", health_check, name="health_check"),
+
+    path("analytics/", analytics_dashboard, name="analytics_dashboard"),
 )
 
 if settings.DEBUG:

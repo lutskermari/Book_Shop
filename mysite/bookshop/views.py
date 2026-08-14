@@ -24,12 +24,14 @@ from django.core.mail import send_mail
 import logging
 import stripe
 
+from .services import send_sale_to_analytics
+import requests
+
 logger = logging.getLogger("bookshop")
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-@cache_page(60 * 15)
 def index(request):
     result = Book.objects.all()
     logger.info(f"Головна | user: {request.user}")
@@ -444,11 +446,20 @@ def order_success(request):
         HttpResponse: Відрендерений шаблон order_success.html.
     """
     order = get_object_or_404(Order, id=request.GET.get("order_id"))
+    
+    for item in order.items.all():
+        send_sale_to_analytics(
+            book_id=item.book.id,
+            book_title=item.book.title,
+            quantity=item.quantity,
+            total_price=item.get_cost()
+        )
 
     if not order.paid:
         order.paid = True
         order.save()
         logger.info(f"Замовлення #{order.id} оплачено")
+        
         send_mail(
             subject=f"Замовлення #{order.id} успішно оплачено!",
             message=f"Дякуємо за оплату замовлення на суму {order.get_total_cost()} грн.",
@@ -457,3 +468,20 @@ def order_success(request):
         )
 
     return render(request, "order_success.html", {"order": order})
+
+def analytics_dashboard(request):
+    try:
+        response = requests.get(
+            "http://analytics-web:8001/api/analytics/summary/",
+            timeout=5,
+        )
+        stats = response.json()
+        error = None
+    except Exception:
+        stats = {}
+        error = "Сервіс аналітики недоступний"
+
+    return render(request, "analytics.html", {
+        "stats": stats,
+        "error": error,
+    })

@@ -1,6 +1,9 @@
+version: '3.8'
+
 services:
   db:
     image: postgres:16-alpine
+    container_name: bookshop_db_container
     env_file: .env
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
@@ -16,6 +19,7 @@ services:
 
   redis:
     image: redis:7-alpine
+    container_name: bookshop_redis
     volumes:
       - redis_data:/data
     healthcheck:
@@ -26,6 +30,7 @@ services:
 
   web:
     build: ./mysite
+    container_name: bookshop_web
     env_file: .env
     environment:
       - DJANGO_SETTINGS_MODULE=settings.development
@@ -37,8 +42,8 @@ services:
       - ./mysite:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/media
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -47,6 +52,7 @@ services:
 
   celery_worker:
     build: ./mysite
+    container_name: bookshop_celery_worker
     env_file: .env
     environment:
       - DJANGO_SETTINGS_MODULE=settings.development
@@ -62,6 +68,7 @@ services:
 
   celery_beat:
     build: ./mysite
+    container_name: bookshop_celery_beat
     env_file: .env
     environment:
       - DJANGO_SETTINGS_MODULE=settings.development
@@ -76,6 +83,7 @@ services:
 
   nginx:
     image: nginx:alpine
+    container_name: bookshop_nginx
     ports:
       - "80:80"
     volumes:
@@ -85,8 +93,45 @@ services:
     depends_on:
       - web
 
+  analytics_db:
+    image: postgres:16-alpine
+    container_name: analytics_db_container
+    environment:
+      POSTGRES_DB: analytics_db
+      POSTGRES_USER: analytics_user
+      POSTGRES_PASSWORD: analytics_password
+    volumes:
+      - analytics_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U analytics_user -d analytics_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  analytics-web:
+    build: ./analytics_service
+    container_name: analytics_web
+    command: >
+      sh -c "python manage.py makemigrations api &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8001"
+    volumes:
+      - ./analytics_service:/app
+    ports:
+      - "8001:8001"
+    environment:
+      - POSTGRES_DB=analytics_db
+      - POSTGRES_USER=analytics_user
+      - POSTGRES_PASSWORD=analytics_password
+      - POSTGRES_HOST=analytics_db
+      - POSTGRES_PORT=5432
+    depends_on:
+      analytics_db:
+        condition: service_healthy
+
 volumes:
   postgres_data:
   redis_data:
   static_volume:
   media_volume:
+  analytics_postgres_data:

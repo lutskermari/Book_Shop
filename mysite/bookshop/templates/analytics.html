@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Аналітика продажів</h2>
+
+    <p><strong>Всього продажів:</strong> {{ stats.total_sales }}</p>
+    <p><strong>Загальний дохід:</strong> {{ stats.total_revenue }} грн</p>
+    <p><strong>Сьогодні продажів:</strong> {{ stats.today_sales }}</p>
+    <p><strong>Дохід сьогодні:</strong> {{ stats.today_revenue }} грн</p>
+
+    <h3>Топ-3 книги</h3>
+    <ol>
+        {% for book in stats.top_books %}
+            <li>{{ book.book_title }} — {{ book.total_qty }} шт.</li>
+        {% endfor %}
+    </ol>
+
+{% endblock %}
