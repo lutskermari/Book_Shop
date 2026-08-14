@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-08 20:34+0000\n"
+"POT-Creation-Date: 2026-08-14 10:41+0000\n"
 "PO-Revision-Date: 2026-07-08 20:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,99 +11,137 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: bookshop/models.py:5
+#: bookshop/models.py:6
 msgid "Category Name"
 msgstr "Назва категорії"
 
-#: bookshop/models.py:6
+#: bookshop/models.py:7
 msgid "Slug"
 msgstr "Slug"
 
-#: bookshop/models.py:9 bookshop/models.py:16
+#: bookshop/models.py:10 bookshop/models.py:18
 msgid "Category"
 msgstr "Категорія"
 
-#: bookshop/models.py:10
+#: bookshop/models.py:11
 msgid "Categories"
 msgstr "Категорії"
 
-#: bookshop/models.py:17
+#: bookshop/models.py:19
 msgid "Book Title"
 msgstr "Назва книги"
 
-#: bookshop/models.py:18
+#: bookshop/models.py:20
 msgid "Author"
 msgstr "Автор"
 
-#: bookshop/models.py:19 bookshop/models.py:52
+#: bookshop/models.py:22 bookshop/models.py:65
 msgid "Price"
 msgstr "Ціна"
 
-#: bookshop/models.py:20
+#: bookshop/models.py:24
 msgid "Description"
 msgstr "Опис"
 
-#: bookshop/models.py:21
+#: bookshop/models.py:26
 msgid "Published Date"
 msgstr "Дата публікації"
 
-#: bookshop/models.py:22
+#: bookshop/models.py:28
 msgid "Stock Status"
 msgstr "Наявність"
 
-#: bookshop/models.py:25 bookshop/models.py:51
+#: bookshop/models.py:31 bookshop/models.py:64
 msgid "Book"
 msgstr "Книга"
 
-#: bookshop/models.py:26
+#: bookshop/models.py:32
 msgid "Books"
 msgstr "Книги"
 
-#: bookshop/models.py:32
+#: bookshop/models.py:39
 msgid "First Name"
 msgstr "Ім'я"
 
-#: bookshop/models.py:33
+#: bookshop/models.py:40
 msgid "Last Name"
 msgstr "Прізвище"
 
-#: bookshop/models.py:34 bookshop/templates/order_create.html:8
+#: bookshop/models.py:41 bookshop/templates/order_create.html:8
 msgid "Email"
 msgstr "Email"
 
-#: bookshop/models.py:35
+#: bookshop/models.py:42
 msgid "Address"
 msgstr "Адреса"
 
-#: bookshop/models.py:36
+#: bookshop/models.py:43
 msgid "Paid"
 msgstr "Оплачено"
 
-#: bookshop/models.py:37
+#: bookshop/models.py:44
 msgid "Created At"
 msgstr "Дата створення"
 
-#: bookshop/models.py:40 bookshop/models.py:44 bookshop/models.py:50
+#: bookshop/models.py:47 bookshop/models.py:51 bookshop/models.py:62
 msgid "Order"
 msgstr "Замовлення"
 
-#: bookshop/models.py:41
+#: bookshop/models.py:48
 msgid "Orders"
 msgstr "Замовлення"
 
-#: bookshop/models.py:53
+#: bookshop/models.py:66
 msgid "Quantity"
 msgstr "Кількість"
 
-#: bookshop/models.py:56
+#: bookshop/models.py:69
 msgid "Order Item"
 msgstr "Позиція замовлення"
 
-#: bookshop/models.py:57
+#: bookshop/models.py:70
 msgid "Order Items"
 msgstr "Позиції замовлення"
+
+#: bookshop/templates/analytics.html:5
+msgid "Аналітика продажів"
+msgstr "Sales Analytics"
+
+#: bookshop/templates/analytics.html:7
+msgid "Всього продажів"
+msgstr "Total Sales"
+
+#: bookshop/templates/analytics.html:8
+msgid "Загальний дохід"
+msgstr "Total Revenue"
+
+#: bookshop/templates/analytics.html:8 bookshop/templates/analytics.html:10
+#: bookshop/templates/book_list.html:14
+msgid "грн"
+msgstr "UAH"
+
+#: bookshop/templates/analytics.html:9
+msgid "Сьогодні продажів"
+msgstr "Today's Sales"
+
+#: bookshop/templates/analytics.html:10
+msgid "Дохід сьогодні"
+msgstr "Today's Revenue"
+
+#: bookshop/templates/analytics.html:12
+#, fuzzy
+#| msgid "Пошук книги"
+msgid "Топ-3 книги"
+msgstr "Top 3 Books"
+
+#: bookshop/templates/analytics.html:15
+msgid "шт."
+msgstr "pcs."
 
 #: bookshop/templates/base.html:7
 msgid "Магазин книг"
@@ -154,6 +192,10 @@ msgid "Реєстрація"
 msgstr "Реєстрація"
 
 #: bookshop/templates/base.html:35
+msgid "Аналітика"
+msgstr "Analytics"
+
+#: bookshop/templates/base.html:39
 msgid "Профіль"
 msgstr "Профіль"
 
@@ -253,15 +295,11 @@ msgstr "Вперед"
 msgid "Список книг"
 msgstr "Список книг"
 
-#: bookshop/templates/book_list.html:12
+#: bookshop/templates/book_list.html:14
 msgid "Ціна"
 msgstr "Ціна"
 
-#: bookshop/templates/book_list.html:12
-msgid "грн"
-msgstr "грн"
-
-#: bookshop/templates/book_list.html:15 bookshop/templates/index.html:18
+#: bookshop/templates/book_list.html:17 bookshop/templates/index.html:18
 msgid "Книг поки немає в базі."
 msgstr "Книг поки немає в базі."
 
@@ -356,27 +394,27 @@ msgstr ""
 "        Замовлення #%(id)s оформлено!\n"
 "    "
 
-#: mysite/settings.py:24
+#: settings/base.py:28
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: mysite/settings.py:25
+#: settings/base.py:29
 msgid "English"
 msgstr "Англійська"
 
-#: users/models.py:6
+#: users/models.py:7
 msgid "Phone Number"
 msgstr "Номер телефону"
 
-#: users/models.py:7
+#: users/models.py:9
 msgid "Avatar"
 msgstr "Аватар"
 
-#: users/models.py:10
+#: users/models.py:13
 msgid "User"
 msgstr "Користувач"
 
-#: users/models.py:11
+#: users/models.py:14
 msgid "Users"
 msgstr "Користувачі"
 

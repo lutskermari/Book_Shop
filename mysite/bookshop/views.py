@@ -17,7 +17,6 @@ from django.contrib.auth.mixins import (
 )
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from django.views.decorators.cache import cache_page
 from django.core.cache import cache
 from .cart import Cart
 from django.core.mail import send_mail
@@ -446,20 +445,20 @@ def order_success(request):
         HttpResponse: Відрендерений шаблон order_success.html.
     """
     order = get_object_or_404(Order, id=request.GET.get("order_id"))
-    
+
     for item in order.items.all():
         send_sale_to_analytics(
             book_id=item.book.id,
             book_title=item.book.title,
             quantity=item.quantity,
-            total_price=item.get_cost()
+            total_price=item.get_cost(),
         )
 
     if not order.paid:
         order.paid = True
         order.save()
         logger.info(f"Замовлення #{order.id} оплачено")
-        
+
         send_mail(
             subject=f"Замовлення #{order.id} успішно оплачено!",
             message=f"Дякуємо за оплату замовлення на суму {order.get_total_cost()} грн.",
@@ -468,6 +467,7 @@ def order_success(request):
         )
 
     return render(request, "order_success.html", {"order": order})
+
 
 def analytics_dashboard(request):
     try:
@@ -481,7 +481,11 @@ def analytics_dashboard(request):
         stats = {}
         error = "Сервіс аналітики недоступний"
 
-    return render(request, "analytics.html", {
-        "stats": stats,
-        "error": error,
-    })
+    return render(
+        request,
+        "analytics.html",
+        {
+            "stats": stats,
+            "error": error,
+        },
+    )

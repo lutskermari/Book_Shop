@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-08 20:34+0000\n"
+"POT-Creation-Date: 2026-08-14 10:42+0000\n"
 "PO-Revision-Date: 2026-07-08 20:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,97 +13,132 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: bookshop/models.py:5
+#: bookshop/models.py:6
 msgid "Category Name"
 msgstr "Category Name"
 
-#: bookshop/models.py:6
+#: bookshop/models.py:7
 msgid "Slug"
 msgstr "Slug"
 
-#: bookshop/models.py:9 bookshop/models.py:16
+#: bookshop/models.py:10 bookshop/models.py:18
 msgid "Category"
 msgstr "Category"
 
-#: bookshop/models.py:10
+#: bookshop/models.py:11
 msgid "Categories"
 msgstr "Categories"
 
-#: bookshop/models.py:17
+#: bookshop/models.py:19
 msgid "Book Title"
 msgstr "Book Title"
 
-#: bookshop/models.py:18
+#: bookshop/models.py:20
 msgid "Author"
 msgstr "Author"
 
-#: bookshop/models.py:19 bookshop/models.py:52
+#: bookshop/models.py:22 bookshop/models.py:65
 msgid "Price"
 msgstr "Price"
 
-#: bookshop/models.py:20
+#: bookshop/models.py:24
 msgid "Description"
 msgstr "Description"
 
-#: bookshop/models.py:21
+#: bookshop/models.py:26
 msgid "Published Date"
 msgstr "Published Date"
 
-#: bookshop/models.py:22
+#: bookshop/models.py:28
 msgid "Stock Status"
 msgstr "Stock"
 
-#: bookshop/models.py:25 bookshop/models.py:51
+#: bookshop/models.py:31 bookshop/models.py:64
 msgid "Book"
 msgstr "Book"
 
-#: bookshop/models.py:26
+#: bookshop/models.py:32
 msgid "Books"
 msgstr "Books"
 
-#: bookshop/models.py:32
+#: bookshop/models.py:39
 msgid "First Name"
 msgstr "First Name"
 
-#: bookshop/models.py:33
+#: bookshop/models.py:40
 msgid "Last Name"
 msgstr "Last Name"
 
-#: bookshop/models.py:34 bookshop/templates/order_create.html:8
+#: bookshop/models.py:41 bookshop/templates/order_create.html:8
 msgid "Email"
 msgstr "Email"
 
-#: bookshop/models.py:35
+#: bookshop/models.py:42
 msgid "Address"
 msgstr "Address"
 
-#: bookshop/models.py:36
+#: bookshop/models.py:43
 msgid "Paid"
 msgstr "Paid"
 
-#: bookshop/models.py:37
+#: bookshop/models.py:44
 msgid "Created At"
 msgstr "Created At"
 
-#: bookshop/models.py:40 bookshop/models.py:44 bookshop/models.py:50
+#: bookshop/models.py:47 bookshop/models.py:51 bookshop/models.py:62
 msgid "Order"
 msgstr "Order"
 
-#: bookshop/models.py:41
+#: bookshop/models.py:48
 msgid "Orders"
 msgstr "Orders"
 
-#: bookshop/models.py:53
+#: bookshop/models.py:66
 msgid "Quantity"
 msgstr "Quantity"
 
-#: bookshop/models.py:56
+#: bookshop/models.py:69
 msgid "Order Item"
 msgstr "Order Item"
 
-#: bookshop/models.py:57
+#: bookshop/models.py:70
 msgid "Order Items"
 msgstr "Order Items"
+
+#: bookshop/templates/analytics.html:5
+msgid "Аналітика продажів"
+msgstr "Sales Analytics"
+
+#: bookshop/templates/analytics.html:7
+msgid "Всього продажів"
+msgstr "Total Sales"
+
+#: bookshop/templates/analytics.html:8
+msgid "Загальний дохід"
+msgstr "Total Revenue"
+
+#: bookshop/templates/analytics.html:8 bookshop/templates/analytics.html:10
+#: bookshop/templates/book_list.html:14
+msgid "грн"
+msgstr "UAH"
+
+#: bookshop/templates/analytics.html:9
+msgid "Сьогодні продажів"
+msgstr ""
+
+#: bookshop/templates/analytics.html:10
+msgid "Дохід сьогодні"
+msgstr ""
+
+#: bookshop/templates/analytics.html:12
+#, fuzzy
+#| msgid "Пошук книги"
+msgid "Топ-3 книги"
+msgstr "Search for a book"
+
+#: bookshop/templates/analytics.html:15
+msgid "шт."
+msgstr ""
 
 #: bookshop/templates/base.html:7
 msgid "Магазин книг"
@@ -154,6 +189,10 @@ msgid "Реєстрація"
 msgstr "Register"
 
 #: bookshop/templates/base.html:35
+msgid "Аналітика"
+msgstr "Analytics"
+
+#: bookshop/templates/base.html:39
 msgid "Профіль"
 msgstr "Profile"
 
@@ -253,15 +292,11 @@ msgstr "Next"
 msgid "Список книг"
 msgstr "Book List"
 
-#: bookshop/templates/book_list.html:12
+#: bookshop/templates/book_list.html:14
 msgid "Ціна"
 msgstr "Price"
 
-#: bookshop/templates/book_list.html:12
-msgid "грн"
-msgstr "UAH"
-
-#: bookshop/templates/book_list.html:15 bookshop/templates/index.html:18
+#: bookshop/templates/book_list.html:17 bookshop/templates/index.html:18
 msgid "Книг поки немає в базі."
 msgstr "No books in the database yet."
 
@@ -356,27 +391,27 @@ msgstr ""
 "        Order #%(id)s has been placed!\n"
 "    "
 
-#: mysite/settings.py:24
+#: settings/base.py:28
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
-#: mysite/settings.py:25
+#: settings/base.py:29
 msgid "English"
 msgstr "English"
 
-#: users/models.py:6
+#: users/models.py:7
 msgid "Phone Number"
 msgstr "Phone Number"
 
-#: users/models.py:7
+#: users/models.py:9
 msgid "Avatar"
 msgstr "Avatar"
 
-#: users/models.py:10
+#: users/models.py:13
 msgid "User"
 msgstr "User"
 
-#: users/models.py:11
+#: users/models.py:14
 msgid "Users"
 msgstr "Users"
 

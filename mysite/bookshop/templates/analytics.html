@@ -1,17 +1,18 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 
-<h2>Аналітика продажів</h2>
+<h2>{% trans "Аналітика продажів" %}</h2>
 
-    <p><strong>Всього продажів:</strong> {{ stats.total_sales }}</p>
-    <p><strong>Загальний дохід:</strong> {{ stats.total_revenue }} грн</p>
-    <p><strong>Сьогодні продажів:</strong> {{ stats.today_sales }}</p>
-    <p><strong>Дохід сьогодні:</strong> {{ stats.today_revenue }} грн</p>
+    <p><strong>{% trans "Всього продажів" %}:</strong> {{ stats.total_sales }}</p>
+    <p><strong>{% trans "Загальний дохід" %}:</strong> {{ stats.total_revenue }} {% trans "грн" %}</p>
+    <p><strong>{% trans "Сьогодні продажів" %}:</strong> {{ stats.today_sales }}</p>
+    <p><strong>{% trans "Дохід сьогодні" %}:</strong> {{ stats.today_revenue }} {% trans "грн" %}</p>
 
-    <h3>Топ-3 книги</h3>
+    <h3>{% trans "Топ-3 книги" %}</h3>
     <ol>
         {% for book in stats.top_books %}
-            <li>{{ book.book_title }} — {{ book.total_qty }} шт.</li>
+            <li>{{ book.book_title }} — {{ book.total_qty }} {% trans "шт." %}</li>
         {% endfor %}
     </ol>
 

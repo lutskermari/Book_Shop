@@ -20,7 +20,11 @@ from django.urls import path
 from api.views import TrackSaleView, AnalyticsSummaryView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/analytics/track-sale/', TrackSaleView.as_view(), name='track-sale'),
-    path('api/analytics/summary/', AnalyticsSummaryView.as_view(), name='analytics-summary'),
+    path("admin/", admin.site.urls),
+    path("api/analytics/track-sale/", TrackSaleView.as_view(), name="track-sale"),
+    path(
+        "api/analytics/summary/",
+        AnalyticsSummaryView.as_view(),
+        name="analytics-summary",
+    ),
 ]

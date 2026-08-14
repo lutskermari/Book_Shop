@@ -32,7 +32,7 @@
             {% endif %}
 
             {% if perms.bookshop.add_book %}
-                <a href="{% url 'analytics_dashboard' %}">Аналітика</a> |
+                <a href="{% url 'analytics_dashboard' %}">{% trans "Аналітика" %}</a> |
             {% endif %}
 
             {% if request.user.is_authenticated %}

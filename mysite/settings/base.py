@@ -21,6 +21,8 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 load_dotenv()
 
+LANGUAGE_CODE = "uk"
+
 USE_I18N = True
 USE_TZ = True
 
@@ -29,7 +31,7 @@ LANGUAGES = [
     ("en", _("English")),
 ]
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOCALE_PATHS = [
     BASE_DIR / "locale",
@@ -258,8 +260,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
-
-LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
 

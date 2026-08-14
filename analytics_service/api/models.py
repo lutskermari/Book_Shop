@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class SaleAnalytics(models.Model):
     book_id = models.IntegerField()
